@@ -80,7 +80,7 @@
                   <a href="#" class="nav-link-item">Blog</a>
                 </li>
                 <li class="nav-item">
-                  <a href="https://uxtheme.net/product-support/" class="nav-link-item">Support</a>
+                  <a href="" class="nav-link-item">Support</a>
                 </li>
               </ul>
             </nav>
