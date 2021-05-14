@@ -20,12 +20,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <!-- Plugin'stylesheets  -->
   <link rel="stylesheet" href="{{asset('./plugins/aos/aos.min.css')}}">
-  <!-- Vendor stylesheets  -->
+  <!-- Vendor stylesheets  --> 
   <link rel="stylesheet" href="{{asset('./css/main.css')}}">
   <!-- Custom stylesheet -->
 </head>
 
-<body data-theme-mode-panel-active data-theme="light" style="font-family: 'Mazzard H';">
+<body data-theme-mode-panel-active data-theme="light" style="font-family: 'Mazzard H'; ">
   <div class="site-wrapper overflow-hidden position-relative">
     <!-- Site Header -->
     <!-- Preloader -->
@@ -63,16 +63,19 @@
                   </a>
                   <ul class="sub-menu" id="submenu-9">
                     <li class="sub-menu--item">
-                      <a href="#">Dropdown 01</a>
+                      <a href="#">Payment</a>
                     </li>
                     <li class="sub-menu--item">
-                      <a href="#">Dropdown 02</a>
+                      <a href="#">Home </a>
                     </li>
                     <li class="sub-menu--item">
-                      <a href="#">Dropdown 03</a>
+                      <a href="#">Noti</a>
                     </li>
                     <li class="sub-menu--item">
-                      <a href="#">Dropdown 04</a>
+                      <a href="#">SerAd</a>
+                    </li>
+                    <li class="sub-menu--item">
+                      <a href="#">MediaAd</a>
                     </li>
                   </ul>
                 </li>
