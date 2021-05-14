@@ -18,11 +18,13 @@ class CreatePackagesTable extends Migration
             $table->string('packageName');
             $table->string('resolution');
             $table->double('price', 6, 2);
-            $table->timestamps();
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign('packageID')->references('id')->on('packages');
+            $table->foreign('packageID')
+            ->references('id')
+            ->on('packages')
+            ->onDelete('set null');
         });
     }
 

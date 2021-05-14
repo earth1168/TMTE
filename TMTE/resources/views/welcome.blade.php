@@ -95,12 +95,12 @@
                         <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
                     @else
                         
-                        <a target="_blank" class="btn btn trailb-btn focus-reset" href="{{ route('login') }}">
+                        <a class="btn btn trailb-btn focus-reset" href="{{ route('login') }}">
               Login
             </a>
                         @if (Route::has('register'))
                            
-                          <a target="_blank" class="btn btn trail-btn focus-reset" href="{{ route('register') }}">
+                          <a class="btn btn trail-btn focus-reset" href="{{ route('register') }}">
               Register
             </a>
                             @endif

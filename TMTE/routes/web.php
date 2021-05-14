@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\profileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +17,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [loginController::class , 'checkUserType'])
+// ->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])
+->get('/dashboard', [loginController::class , 'checkUserType'])
+->name('dashboard');
+
+Route::get('/dashboard/profileView', [profileController::class, 'profileView'])
+->middleware(['auth:sanctum', 'verified'])
+->name('profileView');
+
+Route::post('/dashboard/createProfile', [profileController::class, 'createProfile'])
+->middleware(['auth:sanctum', 'verified'])
+->name('createProfile');
