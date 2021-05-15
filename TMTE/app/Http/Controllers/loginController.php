@@ -26,15 +26,18 @@ class loginController extends Controller
 
     
     public function checkUserType2(){
+        $user = Auth::user();
         switch(Auth::user()->role){
             case "mediaAdmin":
+                // return redirect() -> route("adminPage");
                 return view('admin.dashboard');
 
             case "serviceAdmin":
                 return view('serviceAdmin.dashboard');
 
             case "user":
-                return view('user.index');
+                $profile = DB::table('profiles')->where('userID', '=', $user->id)->pluck('profileName'); 
+                return View::make('dashboard')->with(compact('user', 'profile'));
             default:
                 return view('login');
         }

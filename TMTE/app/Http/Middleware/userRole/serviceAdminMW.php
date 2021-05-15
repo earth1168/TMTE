@@ -22,7 +22,8 @@ class serviceAdminMW
         }
 
         if(Auth::user()->role == 'mediaAdmin'){
-            return redirect() -> route('adminDashboard');
+            
+            return redirect() -> route('adminPage');
         }
 
         if(Auth::user()->role == 'serviceAdmin'){
@@ -30,7 +31,7 @@ class serviceAdminMW
         }
 
         if(Auth::user()->role == 'user'){
-            return redirect() -> route('userHomepage');
+            return redirect() -> route('userPage');
         }
     }
 }
