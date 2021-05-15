@@ -22,5 +22,21 @@ class loginController extends Controller
         $profile = DB::table('profiles')->where('userID', '=', $user->id)->pluck('profileName'); 
         return View::make('dashboard')->with(compact('user', 'profile'));
         // dd($profile->count());
+    }    
+
+    
+    public function checkUserType2(){
+        switch(Auth::user()->role){
+            case "mediaAdmin":
+                return view('admin.dashboard');
+
+            case "serviceAdmin":
+                return view('serviceAdmin.dashboard');
+
+            case "user":
+                return view('user.index');
+            default:
+                return view('login');
+        }
     }
 }
