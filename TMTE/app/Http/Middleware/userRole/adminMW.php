@@ -26,11 +26,11 @@ class adminMW
         }
 
         if(Auth::user()->role == 'serviceAdmin'){
-            return redirect() -> route('serviceAdminDashboard');
+            return redirect() -> route('serviceAdminPage');
         }
 
         if(Auth::user()->role == 'user'){
-            return redirect() -> route('userHomepage');
+            return redirect() -> route('userPage');
         }
         
     }
