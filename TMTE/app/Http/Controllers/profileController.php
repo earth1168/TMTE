@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
 use App\Models\profile;
 
+$GLOBALS = array(
+    'edit' => null
+);
+
+
 class profileController extends Controller
 {
     public function profileView(Request $request) {
@@ -14,8 +19,6 @@ class profileController extends Controller
     }
 
     public function createProfile(Request $request) {
-        // $user = DB::table('profiles')->where('userID', '=', $request->user()->id)->value('profileName');
-        // dd($request->user()->id);
         $request->validate([
             'profileName' => 'required|max:255'
         ]);
@@ -29,11 +32,31 @@ class profileController extends Controller
         $profile->language = $request->language;
         $profile->save();
 
-        return redirect(route('dashboard'))->with('success', 'Create profile completed');
+        return redirect(route('dashboard'))->with('success', 'Profile has been created');
+    }
+
+    public function homeProfile(Request $request) {
+        $user = $request->user();
+        $profile = $request->profile;
+        return View::make('user.index')->with(compact('profile', 'user'));
     }
 
     public function dropProfile(Request $request) {
-        $user = DB::table('packages')->where('userID'. '=', $request->user()->id);
-        $userProfile = DB::table('packages')->where('userID', '=', );
+        $profile = $request->profile;
+        $user = $request->user();
+        DB::table('profiles')->where([['userID', '=', $user->id], ['profileName', '=', $profile]])->delete();
+        return redirect()->back()->with('deleteMessage', 'Profile has been deleted');
     }
+
+    public function toEditProfile(Request $request) {
+        $profile = $request->profile;
+        $user = $request->user();
+        $query = DB::table('profiles')->where([['userID', '=', $user->id], ['profileName', '=', $profile]])->first();
+        $GLOBALS['edit'] = $query;
+        return View::make('editProfile')->with(compact('query'));
+    }
+
+    public function editProfile(Request $request) {
+        dd($GLOBALS['edit']);
+     }
 }

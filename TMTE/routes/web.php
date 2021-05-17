@@ -41,6 +41,22 @@ Route::post('/dashboard/createProfile', [profileController::class, 'createProfil
 ->middleware(['auth:sanctum', 'verified'])
 ->name('createProfile');
 
+Route::post('/user', [profileController::class, 'homeProfile'])
+->middleware('userMW')
+->name('userPage');
+
+Route::post('/dashboard/profileView', [profileController::class, 'dropProfile'])
+->middleware('userMW')
+->name('dropProfile');
+
+Route::post('/dashboard/profileEdit', [profileController::class, 'toEditProfile'])
+->middleware('userMW')
+->name('editProfile');
+
+Route::post('/dashboard/edit', [profileController::class, 'editProfile'])
+->middleware('userMW')
+->name('edit');
+
 Route::get('/admin', [adminController::class, 'index'])
 ->middleware('adminMW')
 ->name('adminPage');
@@ -49,6 +65,6 @@ Route::get('/serviceAdmin', [serviceAdminController::class, 'index'])
 ->middleware('serviceAdminMW')
 ->name('serviceAdminPage');
 
-Route::get('/user', [userController::class, 'index'])
-->middleware('userMW')->name('userPage');
+// Route::get('/user', [userController::class, 'index'])
+// ->middleware('userMW')->name('userPage');
 
