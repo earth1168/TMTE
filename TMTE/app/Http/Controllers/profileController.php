@@ -38,7 +38,7 @@ class profileController extends Controller
 
     public function homeProfile(Request $request) {
         $user = $request->user();
-        $profile = $request->profileName;
+        $profile = $request->profileID;
 
         return View::make('user.index')->with(compact('profile', 'user'));
     }

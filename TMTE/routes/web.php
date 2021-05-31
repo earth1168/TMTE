@@ -25,7 +25,7 @@ Route::get('/', function () {
 // ->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])
-->get('/dashboard', [loginController::class , 'checkUserType2'])
+->get('/dashboard', [loginController::class , 'checkUserType'])
 ->name('dashboard');
 
 //another ways to auth with middleware use with loginController.checkUserType2

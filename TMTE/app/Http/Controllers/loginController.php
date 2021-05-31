@@ -20,7 +20,8 @@ class loginController extends Controller
         }
 
         $profile = DB::table('profiles')->where('userID', '=', $user->id)->pluck('profileName'); 
-        return View::make('dashboard')->with(compact('user', 'profile'));
+        $profileID = DB::table('profiles')->where('userID', '=', $user->id)->pluck('id'); 
+        return View::make('dashboard')->with(compact('user', 'profile', 'profileID'));
         // dd($profile->count());
     }    
 

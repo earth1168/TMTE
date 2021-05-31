@@ -31,7 +31,7 @@
                                             <div class="d-flex justify-content-center">
                                                 <form action="{{ route('userPage') }}" method="post" >
                                                     @csrf
-                                                    <button type="submit" name="profileName" value="{{ $profile }}" class="py-5 text-center btn fs-2">{{ $profile }}</button>
+                                                    <button type="submit" name="profileName" value="{{ $profileID }}" class="py-5 text-center btn fs-2">{{ $profile }}</button>
                                                 </form>
                                                 
                                                 <br>
