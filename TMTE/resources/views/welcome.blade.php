@@ -63,13 +63,13 @@
                   </a>
                   <ul class="sub-menu" id="submenu-9">
                     <li class="sub-menu--item">
-                      <a href="#">Payment</a>
+                      <a href="/payment">Payment</a>
                     </li>
                     <li class="sub-menu--item">
                       <a href="#">Home </a>
                     </li>
                     <li class="sub-menu--item">
-                      <a href="#">Noti</a>
+                      <a href="/notification">Notification</a>
                     </li>
                     <li class="sub-menu--item">
                       <a href="#">SerAd</a>
@@ -90,7 +90,7 @@
           </div>
           <div class="header-btn header-btn-l-14 ms-auto d-none d-xs-inline-flex">
           @if (Route::has('login'))
-                
+
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
                     @else
@@ -103,10 +103,10 @@
                           <a class="btn btn trail-btn focus-reset" href="{{ route('register') }}">
               Register
             </a>
-                            @endif
+                        @endif
                     @endauth
                 
-            @endif
+          @endif
           </div>
           <!-- mobile menu trigger -->
           <div class="mobile-menu-trigger">
