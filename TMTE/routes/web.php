@@ -49,7 +49,7 @@ Route::post('/dashboard/profileView', [profileController::class, 'dropProfile'])
 ->middleware('userMW')
 ->name('dropProfile');
 
-Route::post('/dashboard/profileEdit', [profileController::class, 'toEditProfile'])
+Route::get('/dashboard/profileEdit', [profileController::class, 'toEditProfile'])
 ->middleware('userMW')
 ->name('editProfile');
 
