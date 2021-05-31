@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\profileController;
+use App\Http\Controllers\notificationform;
+use App\Models\User;
+use App\Http\Controllers\paymentcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +36,17 @@ Route::get('/dashboard/profileView', [profileController::class, 'profileView'])
 Route::post('/dashboard/createProfile', [profileController::class, 'createProfile'])
 ->middleware(['auth:sanctum', 'verified'])
 ->name('createProfile');
+
+Route :: get('/notification',[notificationform :: class, 'formnoti']) -> name('noti');
+
+Route::post('/notilog',[notificationform:: class,'notilog']) -> name('sended');
+
+Route::get('/payment',[paymentcontroller :: class, 'customerpayment']);
+
+Route::post('/addpayment',[paymentcontroller :: class, 'addpay']) -> name('addpayment');
+
+Route :: get('/member', function(){
+    $users = user:: all();
+    return view('Notification.member', compact('users'));
+}) -> name('member');
+
