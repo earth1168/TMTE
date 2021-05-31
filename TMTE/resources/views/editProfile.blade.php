@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Profile</title>
+    <title>Edit Profile</title>
     <script src="{{ mix('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-    
+
     <!-- Bootstrap , fonts & icons  -->
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./fonts/icon-font/css/style.css">
@@ -38,9 +38,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-    
+                
                 <div class="container">
-                    <h1 class="text-dark">Create a profile</h1><br>
+                    <div class="text-dark fs-1">Edit a profile</div><br>
                     @if (session('warningMessage'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             {{ session('warningMessage') }}
@@ -48,11 +48,12 @@
                         </div>
                     @endif
 
-                    <form action="{{route('createProfile')}}" method="post">
+                    <form action="{{ route('edit') }}" method="post">
                         @csrf
                         <div class="mt-4">
                             <label for="profileName">Profile Name</label><br>
-                            <input type="text" id="profileName" name="profileName" required>
+                            <input type="text" id="profileName" name="profileName" value="{{ $query->profileName }}">
+                            <input type="hidden" id="oldProfileName" name="oldProfileName" value="{{ $query->profileName }}">
                         </div>
                         @error('profileName')
                             <span class="text-danger my-2">{{ message }}</span>
@@ -61,37 +62,63 @@
                         <div class="mt-4">
                             <label for="language">Language</label><br>
                             <select name="language" id="language">
-                                <option value="Thai">Thai</option>
-                                <option value="English">English</option>
-                                <option value="Japanese">Japanese</option>
+                                @if ($query->language == "Thai")
+                                    <option value="Thai" selected>Thai</option>
+                                @else
+                                    <option value="Thai">Thai</option>
+                                @endif
+                                @if ($query->language == "English")
+                                    <option value="English" selected>English</option>
+                                @else
+                                    <option value="English">English</option>
+                                @endif
+                                @if ($query->language == "Japanese")
+                                    <option value="Japanese" selected>Japanese</option>
+                                @else
+                                    <option value="Japanese">Japanese</option>
+                                @endif
                             </select>
                         </div>
 
                         <div class="mt-4">
-                            <input type="checkbox" id="playNext" name="playNext" value="TRUE" checked>
+                            @if  ($query->playNext)
+                                <input type="checkbox" id="playNext" name="playNext" value="TRUE" checked>
+                            @elseif (!$query->playNext)
+                                <input type="checkbox" id="playNext" name="playNext" value="TRUE">
+                            @endif
                             <label for="playNext">Play next video</label>
                         </div>
 
                         <div class="mt-4">
-                            <input type="checkbox" id="playTrailer" name="playTrailer" value="TRUE" checked>
+                            @if  ($query->playTrailer)
+                                <input type="checkbox" id="playTrailer" name="playTrailer" value="TRUE" checked>
+                            @elseif (!$query->playTrailer)
+                                <input type="checkbox" id="playTrailer" name="playTrailer" value="TRUE">
+                            @endif
                             <label for="playTrailer">Play a trailer</label>
                         </div>
 
                         <div class="mt-4">
-                            <input type="checkbox" id="kidUser" name="kidUser" value="TRUE">
+                            @if  ($query->kidUser)
+                                <input type="checkbox" id="kidUser" name="kidUser" value="TRUE" checked>
+                            @elseif (!$query->kidUser)
+                                <input type="checkbox" id="kidUser" name="kidUser" value="TRUE">
+                            @endif
                             <label for="kidUser">Kid user</label>
                         </div>
 
                         <a href="{{ route('dashboard') }}">
                             <button type="button" value="back" class="btn btn-lg btn-outline-primary mt-4 text-center m-3">Back</button>
                         </a>
-                        <button type="submit" value="Create" class="btn btn-lg btn-outline-primary mt-4 text-center m-3">Create</button>
+                        <button type="submit" value="Edit" class="btn btn-lg btn-outline-primary mt-4 text-center m-3">Edit</button>
+                        
                     </form>
                 </div>
-                
+
             </div>
         </div>
     </div>
+
 
 
 

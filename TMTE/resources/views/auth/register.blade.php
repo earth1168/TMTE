@@ -1,7 +1,10 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <!-- <x-jet-authentication-card-logo /> -->
+            <a href="{{ route('welcome') }}">
+                <img src="image/logo/logor.png" alt="">
+            </a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -30,8 +33,12 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="country" value="{{ __('Country') }}" />
-                <x-jet-input id="country" class="block mt-1 w-full" type="text" name="country" :value="old('country')" required autofocus autocomplete="country" />
+                <label for="country">Country</label><br>
+                <select name="country" id="country" style="width: 25rem;">
+                    <option value="Thai">Thai</option>
+                    <option value="USA">United State of America</option>
+                    <option value="Japan">Japan</option>
+                </select>
             </div>
 
             <div class="mt-4">

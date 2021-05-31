@@ -7,6 +7,9 @@ use App\Http\Controllers\notificationform;
 use App\Models\User;
 use App\Http\Controllers\paymentcontroller;
 
+use App\Http\Controllers\adminController;
+use App\Http\Controllers\serviceAdminController;
+use App\Http\Controllers\userController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,8 +29,13 @@ Route::get('/', function () {
 // ->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])
-->get('/dashboard', [loginController::class , 'checkUserType'])
+->get('/dashboard', [loginController::class , 'checkUserType2'])
 ->name('dashboard');
+
+//another ways to auth with middleware use with loginController.checkUserType2
+// Route::middleware(['auth:sanctum', 'verified'])
+// ->get('/dashboard', [loginController::class , 'checkUserType2'])
+// ->name('dashboard');
 
 Route::get('/dashboard/profileView', [profileController::class, 'profileView'])
 ->middleware(['auth:sanctum', 'verified'])
@@ -49,4 +57,31 @@ Route :: get('/member', function(){
     $users = user:: all();
     return view('Notification.member', compact('users'));
 }) -> name('member');
+
+Route::post('/user', [profileController::class, 'homeProfile'])
+->middleware('userMW')
+->name('userPage');
+
+Route::post('/dashboard/profileView', [profileController::class, 'dropProfile'])
+->middleware('userMW')
+->name('dropProfile');
+
+Route::get('/dashboard/profileEdit', [profileController::class, 'toEditProfile'])
+->middleware('userMW')
+->name('editProfile');
+
+Route::post('/dashboard/edit', [profileController::class, 'editProfile'])
+->middleware('userMW')
+->name('edit');
+
+Route::get('/admin', [adminController::class, 'index'])
+->middleware('adminMW')
+->name('adminPage');
+
+Route::get('/serviceAdmin', [serviceAdminController::class, 'index'])
+->middleware('serviceAdminMW')
+->name('serviceAdminPage');
+
+// Route::get('/user', [userController::class, 'index'])
+// ->middleware('userMW')->name('userPage');
 
