@@ -21,10 +21,9 @@ class notificationform extends Controller
         ]);
 
         $noti = new notification;
-        $name = new notification;
         $noti -> adminid = Auth:: user() -> id;
-        $name -> firstname = Auth:: user() -> firstName;
-        $name -> lastname = Auth:: user() -> lastName;
+        $noti -> firstname = Auth:: user() -> firstName;
+        $noti -> lastname = Auth:: user() -> lastName;
         $noti -> role = Auth:: user() -> role;
         $noti -> description = $request -> Description;
         $noti -> save();

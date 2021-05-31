@@ -15,7 +15,7 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table ->id();
-            $table ->integer('user_id');
+            $table ->unsignedBigInteger('user_id');
             $table ->string('name');
             $table ->string('lastname');
             $table ->string('card_id');
@@ -23,7 +23,9 @@ class CreatePaymentsTable extends Migration
             $table ->string('cvv');
             $table ->string('mmyy');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
+
     }
 
     /**
