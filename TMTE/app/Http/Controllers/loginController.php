@@ -13,7 +13,7 @@ class loginController extends Controller
     public function checkUserType(Request $request) {
         $user = Auth::user();
         if($user->role == 'mediaAdmin') {
-            return View::make('sampleAdmin')->with(compact('user'));
+            return View::make('admin.dashboard')->with(compact('user'));
         }
         else if($user->role == 'serviceAdmin') {
             return View::make('sampleAdmin')->with(compact('user'));

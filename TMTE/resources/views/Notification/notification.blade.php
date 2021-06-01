@@ -17,9 +17,10 @@
         <form class="row g-3", action ="{{route('sended')}}", method = "Post">
             @csrf
 
+
             <div class="col-md-5">
                 <label for="Name" class="form-label">Name</label>
-                <input type="name" class="form-control"  placeholder = {{$notifi}}>
+                <input type="name" class="form-control"  placeholder = name>
             </div>
 
             <div class="col-md-3">
@@ -52,12 +53,12 @@
                     <tbody>
                         @php($i=1)
                         @foreach($users as $row)
-                            <tr>
-                                <td>{{$row -> id}}</td>
-                                <td>{{$row -> firstName}}</td>
-                                <td>{{$row -> lastName}}</td>
-                                <td>{{$row -> role}}</td>
-                            </tr>
+                                <tr>
+                                    <td>{{$row -> id}}</td>
+                                    <td>{{$row -> firstName}}</td>
+                                    <td>{{$row -> lastName}}</td>
+                                    <td>{{$row -> role}}</td>
+                                </tr>
                         @endforeach
                     </tbody>
                 </table>
