@@ -18,7 +18,7 @@
                         <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                             {{ __('Profile') }}
                         </x-jet-nav-link>
-                        <x-jet-nav-link href="{{ route('viewPayment') }}" :active="request()->routeIs('viewPayment')">
+                        <x-jet-nav-link href="/payment">
                             {{ __('Payment') }}
                         </x-jet-nav-link>
                     @elseif(Auth::user()->role == 'serviceAdmin')
