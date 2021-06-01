@@ -27,7 +27,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-
+Route :: get('/notification',[notificationform :: class, 'formnoti']) -> name('noti');
 
 Route::post('/notilog',[notificationform:: class,'notilog']) -> name('sended');
 
@@ -52,7 +52,7 @@ Route :: get('/member', function(){
     return view('Notification.member', compact('users'));
 }) -> name('member');
 
-Route::get('/dashboard', [userController::class , 'index'])
+Route::get('/dashboard', [loginController::class , 'checkUserType2'])
 ->middleware(['auth:sanctum', 'verified'])
 ->name('dashboard');
 
@@ -64,11 +64,6 @@ Route::get('/admin', [adminController::class, 'index'])
 ->middleware(['auth:sanctum', 'verified'])
 ->name('adminPage');
 
-
-Route::middleware(['serviceMW']) -> group(function(){
-    Route :: get('/notification',[notificationform :: class, 'formnoti']) -> name('noti');
-    
-});
 
 //User role
 Route::middleware(['userMW'])->group(function(){
