@@ -28,51 +28,51 @@ Route::get('/', function () {
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [loginController::class , 'checkUserType'])
 // ->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])
-->get('/dashboard', [loginController::class , 'checkUserType'])
-->name('dashboard');
-
 //another ways to auth with middleware use with loginController.checkUserType2
 // Route::middleware(['auth:sanctum', 'verified'])
 // ->get('/dashboard', [loginController::class , 'checkUserType2'])
 // ->name('dashboard');
 
-Route::get('/dashboard/profileView', [profileController::class, 'profileView'])
-->middleware(['auth:sanctum', 'verified'])
-->name('profileView');
-
-Route::post('/dashboard/createProfile', [profileController::class, 'createProfile'])
-->middleware(['auth:sanctum', 'verified'])
-->name('createProfile');
-
 Route :: get('/notification',[notificationform :: class, 'formnoti']) -> name('noti');
 
 Route::post('/notilog',[notificationform:: class,'notilog']) -> name('sended');
 
-Route::get('/payment',[paymentcontroller :: class, 'customerpayment']);
+// Route::get('/payment',[paymentcontroller :: class, 'customerpayment']);
 
-Route::post('/addpayment',[paymentcontroller :: class, 'addpay']) -> name('addpayment');
+// Route::post('/addpayment',[paymentcontroller :: class, 'addpay']) -> name('addpayment');
+
+Route::get('/payment',[paymentcontroller :: class, 'customerpayment'])
+->middleware('userMW')
+->name('viewPayment');
+
+Route::post('/addpayment',[paymentcontroller :: class, 'addpay']) 
+->middleware('userMW')
+->name('addpayment');
+
+Route::get('/payment/package', [paymentcontroller::class, 'viewPackage'])
+->middleware('userMW')
+->name('viewPackage');
+
+Route::get('/payment/addPackage', [paymentcontroller::class, 'createPaymentLog'])
+->middleware('userMW')
+->name('addPackage');
 
 Route :: get('/member', function(){
     $users = user:: all();
     return view('Notification.member', compact('users'));
 }) -> name('member');
 
-Route::post('/user', [profileController::class, 'homeProfile'])
-->middleware('userMW')
-->name('userPage');
+//User role
+Route::middleware(['userMW', 'auth:sanctum', 'verified'])->group(function(){
+    Route::get('/dashboard', [loginController::class , 'checkUserType'])->name('dashboard');
+    Route::get('/dashboard/profileView', [profileController::class, 'profileView'])->name('profileView');
+    Route::post('/dashboard/createProfile', [profileController::class, 'createProfile'])->name('createProfile');
+    Route::post('/dashboard/profileView', [profileController::class, 'dropProfile'])->name('dropProfile');
+    Route::get('/dashboard/profileEdit', [profileController::class, 'toEditProfile'])->name('editProfile');
+    Route::post('/dashboard/edit', [profileController::class, 'editProfile'])->name('edit');    
+    Route::post('/user', [profileController::class, 'homeProfile'])->name('userPage');
 
-Route::post('/dashboard/profileView', [profileController::class, 'dropProfile'])
-->middleware('userMW')
-->name('dropProfile');
-
-Route::get('/dashboard/profileEdit', [profileController::class, 'toEditProfile'])
-->middleware('userMW')
-->name('editProfile');
-
-Route::post('/dashboard/edit', [profileController::class, 'editProfile'])
-->middleware('userMW')
-->name('edit');
+});
 
 Route::get('/admin', [adminController::class, 'index'])
 ->middleware('adminMW')

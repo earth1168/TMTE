@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\payment;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class paymentcontroller extends Controller
 {
@@ -30,7 +33,26 @@ class paymentcontroller extends Controller
         $payment -> cvv = $request -> CVV;
         $payment -> mmyy = $request -> MMYY;
         $payment -> save();
-        return redirect()-> back()-> with('success',"Recoeded");
+        // return redirect()-> back()-> with('success',"Recoeded");
+        return redirect(route('viewPackage'));
+    }
+
+    public function viewPackage(Request $request) {
+        // $dateNow = Carbon::now();
+        // $dateNext = Carbon::now()->addDays(30);
+        // dd($package);
+        $package = DB::table('packages')->get();
+        return View::make('payment.package')->with(compact('package'));
+    }
+
+    public function createPaymentLog(Request $request) {
+        $user = Auth::user();
+
+        DB::table('users')
+        ->where('id', '=', $user->id)
+        ->update(['packageID' => $request->packageID]);
+
+        
     }
 
 }
