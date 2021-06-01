@@ -29,9 +29,9 @@
 
     @livewireStyles
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-gray-100">
 
-    <div class="bg-gray-100">
+    <div>
         @livewire('navigation-menu')
     </div><br>
 

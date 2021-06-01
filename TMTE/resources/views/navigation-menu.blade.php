@@ -14,28 +14,21 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    @if(Auth::user()->role == "mediaAdmin")
-                        <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                            {{ __('add media for media admin') }}
-                        </x-jet-nav-link>
-
-                        <x-jet-nav-link href="{{ route('adminViewData') }}" :active="request()->routeIs('adminViewData')">
-                            {{ __('view data') }}
-                        </x-jet-nav-link>
-
-                    @elseif(Auth::user()->role == "serviceAdmin")
-                        <x-jet-nav-link href="{{ route('noti') }}" :active="request()->routeIs('noti')">
-                            {{ __('Notification') }}
-                        </x-jet-nav-link>
-                    @endif
+                    @if(Auth::user()->role == 'user')
                         <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                             {{ __('Profile') }}
                         </x-jet-nav-link>
-
-                    
-                    <x-jet-nav-link href="{{ route('member') }}" >
-                        {{ __('Member') }}
-                    </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('viewPayment') }}" :active="request()->routeIs('viewPayment')">
+                            {{ __('Payment') }}
+                        </x-jet-nav-link>
+                    @elseif(Auth::user()->role == 'serviceAdmin')
+                        <x-jet-nav-link href="{{ route('noti') }}" :active="request()->routeIs('noti')">
+                            {{ __('Notification') }}
+                        </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('member') }}" :active="request()->routeIs('member')">
+                            {{ __('Member') }}
+                        </x-jet-nav-link>
+                    @endif
                 </div>
             </div>
 
