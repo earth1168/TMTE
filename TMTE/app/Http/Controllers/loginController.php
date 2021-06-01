@@ -30,8 +30,8 @@ class loginController extends Controller
         $user = Auth::user();
         switch(Auth::user()->role){
             case "mediaAdmin":
-                // return redirect() -> route("adminPage");
-                return view('admin.dashboard');
+                // return redirect(route("adminPage"));
+                return view('admin.dashboard')->with(compact('user'));
 
             case "serviceAdmin":
                 return view('serviceAdmin.dashboard');

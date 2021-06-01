@@ -29,7 +29,7 @@ Route::get('/', function () {
 // ->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])
-->get('/dashboard', [loginController::class , 'checkUserType'])
+->get('/dashboard', [loginController::class , 'checkUserType2'])
 ->name('dashboard');
 
 //another ways to auth with middleware use with loginController.checkUserType2
@@ -74,14 +74,15 @@ Route::post('/dashboard/edit', [profileController::class, 'editProfile'])
 ->middleware('userMW')
 ->name('edit');
 
-Route::get('/admin', [adminController::class, 'index'])
-->middleware('adminMW')
-->name('adminPage');
-
 Route::get('/serviceAdmin', [serviceAdminController::class, 'index'])
 ->middleware('serviceAdminMW')
 ->name('serviceAdminPage');
 
-// Route::get('/user', [userController::class, 'index'])
-// ->middleware('userMW')->name('userPage');
+Route::middleware(['auth:sanctum', 'verified', 'adminMW']) -> group(function(){
+    Route::get('/admin', [adminController::class, 'index']) -> name('adminPage');
+    Route::post('/admin/addMedia', [adminController::class, 'addMedia']) -> name('adminAddMedia');
+    Route::get('/admin/viewData', [adminController::class, 'viewData']) -> name('adminViewData');
+});
+
+ 
 
