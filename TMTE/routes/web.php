@@ -27,21 +27,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [loginController::class , 'checkUserType'])
-// ->name('dashboard');
 
-//another ways to auth with middleware use with loginController.checkUserType2
-// Route::middleware(['auth:sanctum', 'verified'])
-// ->get('/dashboard', [loginController::class , 'checkUserType2'])
-// ->name('dashboard');
-
-Route :: get('/notification',[notificationform :: class, 'formnoti']) -> name('noti');
 
 Route::post('/notilog',[notificationform:: class,'notilog']) -> name('sended');
-
-// Route::get('/payment',[paymentcontroller :: class, 'customerpayment']);
-
-// Route::post('/addpayment',[paymentcontroller :: class, 'addpay']) -> name('addpayment');
 
 Route::get('/payment',[paymentcontroller :: class, 'customerpayment'])
 ->middleware('userMW')
@@ -64,28 +52,38 @@ Route :: get('/member', function(){
     return view('Notification.member', compact('users'));
 }) -> name('member');
 
+Route::get('/dashboard', [userController::class , 'index'])
+->middleware(['auth:sanctum', 'verified'])
+->name('dashboard');
+
+Route::get('/serviceAdmin', [serviceAdminController::class, 'index'])
+->middleware(['auth:sanctum', 'verified'])
+->name('serviceAdminPage');
+
+Route::get('/admin', [adminController::class, 'index'])
+->middleware(['auth:sanctum', 'verified'])
+->name('adminPage');
+
+
+Route::middleware(['serviceMW']) -> group(function(){
+    Route :: get('/notification',[notificationform :: class, 'formnoti']) -> name('noti');
+    
+});
+
 //User role
-Route::middleware(['userMW', 'auth:sanctum', 'verified'])->group(function(){
-    Route::get('/dashboard', [loginController::class , 'checkUserType'])->name('dashboard');
+Route::middleware(['userMW'])->group(function(){
     Route::get('/dashboard/profileView', [profileController::class, 'profileView'])->name('profileView');
     Route::post('/dashboard/createProfile', [profileController::class, 'createProfile'])->name('createProfile');
     Route::post('/dashboard/profileView', [profileController::class, 'dropProfile'])->name('dropProfile');
     Route::get('/dashboard/profileEdit', [profileController::class, 'toEditProfile'])->name('editProfile');
     Route::post('/dashboard/edit', [profileController::class, 'editProfile'])->name('edit');    
     Route::post('/user', [profileController::class, 'homeProfile'])->name('userPage');
-
 });
 
-Route::get('/serviceAdmin', [serviceAdminController::class, 'index'])
-->middleware('serviceAdminMW')
-->name('serviceAdminPage');
-
-Route::middleware(['auth:sanctum', 'verified', 'adminMW']) -> group(function(){
-    Route::get('/admin', [adminController::class, 'index']) -> name('adminPage');
+Route::middleware(['adminMW']) -> group(function(){
     Route::post('/admin/addMedia', [adminController::class, 'addMedia']) -> name('adminAddMedia');
     Route::get('/admin/viewData', [adminController::class, 'viewData']) -> name('adminViewData');
 });
 
  
-
 Route::get('/mediaAd',[mediaAdminController:: class, 'index']);
