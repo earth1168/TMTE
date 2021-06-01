@@ -10,6 +10,8 @@ use App\Http\Controllers\paymentcontroller;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\serviceAdminController;
 use App\Http\Controllers\userController;
+
+use App\Http\Controllers\mediaAdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,3 +88,4 @@ Route::middleware(['auth:sanctum', 'verified', 'adminMW']) -> group(function(){
 
  
 
+Route::get('/mediaAd',[mediaAdminController:: class, 'index']);
