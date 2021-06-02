@@ -30,6 +30,7 @@
                     @if ($profile->count() != 0)    
                         <div class="container">
                             <div class="row">
+                                @php($i = 1)
                                 @foreach ($profile as $profile)
                                     <div class="col d-flex justify-content-center">
                                         <div class="card my-3" style="width: auto; background-color: #DCDCDC">
@@ -37,7 +38,7 @@
                                                 <div class="d-flex justify-content-center">
                                                     <form action="{{ route('userPage') }}" method="post" >
                                                         @csrf
-                                                        <button type="submit" name="profileID" value="{{ $profileID }}" class="py-5 text-center btn fs-2">{{ $profile }}</button>
+                                                        <button type="submit" name="profileID" value="{{ $profileID }}, {{$i++}}" class="py-5 text-center btn fs-2">{{ $profile }}</button>
                                                     </form>
                                                     
                                                     <br>
