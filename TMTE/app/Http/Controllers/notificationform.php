@@ -11,7 +11,7 @@ class notificationform extends Controller
 {
     function formnoti(){
         $notifi = notification:: all();
-        $users = user:: all();
+        $users = user:: paginate(4);
         return view('Notification.notification',compact('notifi','users'));
     }
 
