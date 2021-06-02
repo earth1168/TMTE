@@ -40,53 +40,66 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
     
                 <div class="container">
-                    <h1 class="text-dark">Create a profile</h1><br>
+
                     @if (session('warningMessage'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
                             {{ session('warningMessage') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
 
-                    <form action="{{route('createProfile')}}" method="post">
-                        @csrf
-                        <div class="mt-4">
-                            <label for="profileName">Profile Name</label><br>
-                            <input type="text" id="profileName" name="profileName" required>
-                        </div>
-                        @error('profileName')
-                            <span class="text-danger my-2">{{ message }}</span>
-                        @enderror
+                    <div class="d-flex justify-content-center">
+                        <div class="card m-3" style="width: 50rem;">
+                            <div class="card-header">
+                                <div class="d-flex justify-content-center">
+                                    <h1 class="text-dark">Create a profile</h1><br>
+                                </div>  
+                            </div>
+                            <div class="card-body">
+                                <form action="{{route('createProfile')}}" method="post">
+                                    @csrf
+                                    <div class="mt-4">
+                                        <label for="profileName">Profile Name</label><br>
+                                        <input type="text" id="profileName" name="profileName" required>
+                                    </div>
+                                    @error('profileName')
+                                        <span class="text-danger my-2">{{ message }}</span>
+                                    @enderror
 
-                        <div class="mt-4">
-                            <label for="language">Language</label><br>
-                            <select name="language" id="language">
-                                <option value="Thai">Thai</option>
-                                <option value="English">English</option>
-                                <option value="Japanese">Japanese</option>
-                            </select>
-                        </div>
+                                    <div class="mt-4">
+                                        <label for="language">Language</label><br>
+                                        <select name="language" id="language">
+                                            <option value="Thai">Thai</option>
+                                            <option value="English">English</option>
+                                            <option value="Japanese">Japanese</option>
+                                        </select>
+                                    </div>
 
-                        <div class="mt-4">
-                            <input type="checkbox" id="playNext" name="playNext" value="TRUE" checked>
-                            <label for="playNext">Play next video</label>
-                        </div>
+                                    <div class="mt-4">
+                                        <input type="checkbox" id="playNext" name="playNext" value="TRUE" checked>
+                                        <label class="mx-3" for="playNext">Play next video</label>
+                                    </div>
 
-                        <div class="mt-4">
-                            <input type="checkbox" id="playTrailer" name="playTrailer" value="TRUE" checked>
-                            <label for="playTrailer">Play a trailer</label>
-                        </div>
+                                    <div class="mt-4">
+                                        <input type="checkbox" id="playTrailer" name="playTrailer" value="TRUE" checked>
+                                        <label class="mx-3 for="playTrailer">Play a trailer</label>
+                                    </div>
 
-                        <div class="mt-4">
-                            <input type="checkbox" id="kidUser" name="kidUser" value="TRUE">
-                            <label for="kidUser">Kid user</label>
-                        </div>
+                                    <div class="mt-4">
+                                        <input type="checkbox" id="kidUser" name="kidUser" value="TRUE">
+                                        <label class="mx-3 for="kidUser">Kid user</label>
+                                    </div>
 
-                        <a href="{{ route('dashboard') }}">
-                            <button type="button" value="back" class="btn btn-lg btn-outline-primary mt-4 text-center m-3">Back</button>
-                        </a>
-                        <button type="submit" value="Create" class="btn btn-lg btn-outline-primary mt-4 text-center m-3">Create</button>
-                    </form>
+                                    <a href="{{ route('dashboard') }}">
+                                        <button type="button" value="back" class="btn mt-4 text-center text-white m-3" style="background-color: black">Back</button>
+                                    </a>
+                                    <button type="submit" value="Create" class="btn mt-4 text-center text-white m-3" style="background-color: black">Create</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    
                 </div>
                 
             </div>

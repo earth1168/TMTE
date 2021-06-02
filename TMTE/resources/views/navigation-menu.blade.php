@@ -152,9 +152,21 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-jet-responsive-nav-link>
+            @if(Auth::user()->role == 'user')
+                <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    {{ __('Profile') }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="/payment">
+                    {{ __('Payment') }}
+                </x-jet-responsive-nav-link>
+            @elseif(Auth::user()->role == 'serviceAdmin')
+                <x-jet-responsive-nav-link href="{{ route('noti') }}" :active="request()->routeIs('noti')">
+                    {{ __('Notification') }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ route('member') }}" :active="request()->routeIs('member')">
+                    {{ __('Member') }}
+                </x-jet-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
@@ -167,15 +179,15 @@
                 @endif
 
                 <div>
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->firstName }}</div>
+                    <!-- <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div> -->
                 </div>
             </div>
 
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
+                    {{ __('Setting') }}
                 </x-jet-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
