@@ -73,6 +73,7 @@ Route::middleware(['userMW'])->group(function(){
     Route::get('/dashboard/profileEdit', [profileController::class, 'toEditProfile'])->name('editProfile');
     Route::post('/dashboard/edit', [profileController::class, 'editProfile'])->name('edit');    
     Route::post('/user', [profileController::class, 'homeProfile'])->name('userPage');
+    Route::get('user/noti', [profileController::class, '']) -> name('userNoti');
 });
 
 Route::middleware(['adminMW']) -> group(function(){

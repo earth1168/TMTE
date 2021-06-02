@@ -38,8 +38,14 @@ class profileController extends Controller
 
     public function homeProfile(Request $request) {
         $user = $request->user();
-        $profile = $request->profileID;
-
+        $profile = $request->profileName[1]; 
+        $noti = DB::table('profiles') -> join('temp_notis', function($join) use($profile){
+                                        $join->on('profiles.id', '=', 'temp_notis.profileID')
+                                             ->where('temp_notis.profileID','=', $profile);
+                                        })
+                                        ->get();
+        dd($noti);
+        dd($profile);
         return View::make('user.index')->with(compact('profile', 'user'));
     }
 

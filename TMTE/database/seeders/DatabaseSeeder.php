@@ -75,12 +75,30 @@ class DatabaseSeeder extends Seeder
                 'language' => 'Thai'
             ]
         );
-
-        DB::table('notifications') -> insert(
+        DB::table('temp_noti_contents') -> insert([
             [
-
+                'head' => 'payment',
+                'text' => 'your payment due to date now'
+            ],
+            [
+                'head' => 'new movie',
+                'text' => 'new movie incoming this week dont miss it!'
+            ]
+        ]
+        );
+        DB::table('temp_notis') -> insert([
+            [
+                'profileID' => 1,
+                'notiID' => 1,
+            ],
+            [
+                'profileID' => 1,
+                'notiID' => 2
             ]
 
+        ]
         );
+
+        
     }
 }
