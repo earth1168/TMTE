@@ -11,6 +11,7 @@ class notificationlog extends Model
 
     protected $fillable = [
         'profileID',
-        'NotiID'
+        'NotiID',
+        'seen'
     ];
 }

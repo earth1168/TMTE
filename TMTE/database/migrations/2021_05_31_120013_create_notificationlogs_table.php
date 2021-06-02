@@ -18,6 +18,7 @@ class CreateNotificationlogsTable extends Migration
             $table -> id();
             $table -> Integer('profileID');
             $table -> unsignedBigInteger('NotiID');
+            $table -> tinyInteger('seen');
             $table->timestamps();
             $table->foreign('NotiID')->references('id')->on('notifications');
             $table->foreign('profileID')->references('id')->on('profiles');

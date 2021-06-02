@@ -31,6 +31,14 @@ class DatabaseSeeder extends Seeder
                 'country' => 'UK',
                 'password' => Hash::make('admin'),
                 'role' => 'serviceAdmin'
+            ],
+            [
+                'firstName' => 'user',
+                'lastName' => '01',
+                'email' => 'user@mail.com',
+                'country' => 'UK',
+                'password' => Hash::make('1111'),
+                'role' => 'user'
             ]
         ]);
 
@@ -56,5 +64,23 @@ class DatabaseSeeder extends Seeder
                 'price' => 419.00
             ]
         ]);
+
+        DB::table('profiles') -> insert(
+            [
+                'userID' => 3,
+                'profileName' => 'me',
+                'playNext' => 1,
+                'playTrailer' => 1,
+                'kidUser' => 0,
+                'language' => 'Thai'
+            ]
+        );
+
+        DB::table('notifications') -> insert(
+            [
+
+            ]
+
+        );
     }
 }
