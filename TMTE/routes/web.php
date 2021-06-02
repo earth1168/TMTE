@@ -94,3 +94,5 @@ Route::middleware(['adminMW']) -> group(function(){
 
  
 Route::get('/mediaAd',[mediaAdminController:: class, 'index']);
+Route::get('/mediaAd/mediaform',[mediaAdminController:: class, 'media']);
+Route::get('/mediaAd/licenseform',[mediaAdminController:: class, 'license']);
