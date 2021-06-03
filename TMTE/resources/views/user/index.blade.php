@@ -49,7 +49,7 @@
                     <span class="material-icons">notifications</span>
                     <span class="icon-button__badge">{{$nNoti}}</span>
                 </button>
-                <h1>{{$noti[0]->seen}}</h1>
+                <h1>{{$noti}}</h1>
 
                 <section class="thumbSection">
                     <h2 class="thumbTitle">Popular Now</h2>

@@ -25,9 +25,7 @@
                         <x-jet-nav-link href="{{ route('noti') }}" :active="request()->routeIs('noti')">
                             {{ __('Notification') }}
                         </x-jet-nav-link>
-                        <x-jet-nav-link href="{{ route('member') }}" :active="request()->routeIs('member')">
-                            {{ __('Member') }}
-                        </x-jet-nav-link>
+                        
                     @endif
                 </div>
             </div>
@@ -163,9 +161,7 @@
                 <x-jet-responsive-nav-link href="{{ route('noti') }}" :active="request()->routeIs('noti')">
                     {{ __('Notification') }}
                 </x-jet-responsive-nav-link>
-                <x-jet-responsive-nav-link href="{{ route('member') }}" :active="request()->routeIs('member')">
-                    {{ __('Member') }}
-                </x-jet-responsive-nav-link>
+                
             @endif
         </div>
 
