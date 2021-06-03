@@ -78,9 +78,20 @@ class DatabaseSeeder extends Seeder
 
         DB::table('notifications') -> insert(
             [
-
+                'adminid' => 1,
+                'firstname' => 'thiji',
+                'lastname' => 'za',
+                'role' => 'mediaAdmin',
+                'description' => 'หนังดี'
             ]
-
+        );
+        $qnoti = DB::table('notifications') -> first();
+        $qprofile = DB::table('profiles') -> first();
+        DB::table('notificationlogs') -> insert(
+            [
+                'profileID' => $qprofile -> id,
+                'NotiID' => $qnoti -> id
+            ]
         );
     }
 }

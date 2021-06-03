@@ -58,26 +58,39 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
+                                            <th scope="col">Select</th>
                                             <th scope="col">UserID</th>
-                                            <th scope="col">FirstName</th>
-                                            <th scope="col">LastName</th>
-                                            <th scope="col">Role</th>
+                                            <th scope="col">Profilename</th>
                                         </tr>
                                     </thead>
                                         
                                     <tbody>
-                                        @php($i=1)
-                                        @foreach($users as $row)
+                                        <?php
+                                            $i = 1;
+                                        ?>
+                                        @foreach($profile as $row)
+                                        <?php
+                                            $i++;
+                                        ?>
                                             <tr>
-                                                <td>{{$row -> id}}</td>
-                                                <td>{{$row -> firstName}}</td>
-                                                <td>{{$row -> lastName}}</td>
-                                                <td>{{$row -> role}}</td>
+                                                <td>
+                                                <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="{{$row -> id}}" name = check[]>
+                                                <label class="form-check-label" for="check[]" name = check[]>
+                                                    select
+                                                </label>
+                                                </div>
+                                                </td>
+                                                <td>{{$row -> userID}}</td>
+                                                <td>{{$row -> profileName}}</td>
                                             </tr>
                                         @endforeach
+
                                     </tbody>
                                 </table>
-    
+                                    {{$profile -> links()}}
+
+
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">Send</button>
                                 </div>
@@ -87,7 +100,6 @@
                                         <div class = "alert alert-success">{{session('success')}}</div>
                                     </div>
                                 @endif
-                                    <a href="{{route('member')}}">Member</a>
                             </div>
                         </div>
                         </div>   

@@ -47,10 +47,6 @@ Route::get('/payment/addPackage', [paymentcontroller::class, 'createPaymentLog']
 ->middleware('userMW')
 ->name('addPackage');
 
-Route :: get('/member', function(){
-    $users = user:: all();
-    return view('Notification.member', compact('users'));
-}) -> name('member');
 
 Route::get('/dashboard', [loginController::class , 'checkUserType2'])
 ->middleware(['auth:sanctum', 'verified'])
