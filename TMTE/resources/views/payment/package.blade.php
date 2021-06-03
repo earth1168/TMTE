@@ -39,40 +39,73 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <h1 class="m-4 d-flex justify-content-center">Select your package</h1>
-                    @foreach($package as $package)
+
+                    <?php
+                        if(session('cardID') != null) $id = session('cardID');  //first add credit card to database
+                        else $id =  $selectID;                                  //credit card is in database
+                    ?>
+
+                    @if($currentPackage != null) 
                         <div class="d-flex justify-content-center">
-                            <div class="card mb-3" style="width: 550px;">
-                                <div class="row g-0" style="background-color: black">
-                                    <div class="col-md-4 d-flex justify-content-center align-items-center">
-                                        <form action="{{ route('addPackage') }}" method="post">
-                                            @csrf
-                                            <button type="submit" name="packageID" value="{{ $package->id }}" class="m-3 py-5 text-center btn fs-2 text-white" style="background-color: #E50914; width: 150px;">
-                                                {{ $package->packageName }}
-                                            </button>
-                                        </form>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            @if($package->id == 1)
-                                                <p class="card-text text-white fs-5">For mobile user</p>
-                                            @elseif($package->id == 2)
-                                                <p class="card-text text-white fs-5">Fun with basic</p>
-                                            @elseif($package->id == 3)
-                                                <p class="card-text text-white fs-5">Good time with standard</p>
-                                            @elseif($package->id == 4)
-                                                <p class="card-text text-white fs-5">Exclusive premium</p>
-                                            @endif
-                                            <p class="card-text text-white">Price: {{ $package->price }} Bath</p>
-                                            <p class="card-text text-white">Resolution: {{ $package->resolution }}</p>
+                            <h3 class="mb-3">Your current package : {{ $currentPackage->packageName }}</h3>
+                            <form action="{{ route('addPackage') }}" method="post">
+                                <input type="hidden" name="creditID_DBMS" value="{{ $id }}">
+                                @csrf
+                                @if($active == TRUE)
+                                    <button type="submit" name="packageID" value="{{ $currentPackage->id }}" class="btn mx-2 disabled" tabindex="-1" role="button" aria-disabled="true" style="background-color: black">
+                                        Next
+                                    </button>
+                                @else
+                                    <button type="submit" name="packageID" value="{{ $currentPackage->id }}" class="btn mx-2 text-white" style="background-color: black">
+                                        Next
+                                    </button>
+                                @endif
+                            </form>  
+                        </div>
+                    @else
+                        <div class="d-flex justify-content-center">
+                            <h3 class="mb-3">Your current package : None</h3>
+                        </div>
+                    @endif
+                    @if($active == FALSE)
+                        @foreach($package as $package)
+                            <div class="d-flex justify-content-center">
+                                <div class="card mb-3" style="width: 550px;">
+                                    <div class="row g-0" style="background-color: black">
+                                        <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                            <form action="{{ route('addPackage') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="creditID_DBMS" value="{{ $id }}">
+                                                <button type="submit" name="packageID" value="{{ $package->id }}" class="m-3 py-5 text-center btn fs-2 text-white" style="background-color: #E50914; width: 150px;">
+                                                    {{ $package->packageName }}
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                @if($package->id == 1)
+                                                    <p class="card-text text-white fs-5">For mobile user</p>
+                                                @elseif($package->id == 2)
+                                                    <p class="card-text text-white fs-5">Fun with basic</p>
+                                                @elseif($package->id == 3)
+                                                    <p class="card-text text-white fs-5">Good time with standard</p>
+                                                @elseif($package->id == 4)
+                                                    <p class="card-text text-white fs-5">Exclusive premium</p>
+                                                @endif
+                                                <p class="card-text text-white">Price: {{ $package->price }} Bath</p>
+                                                <p class="card-text text-white">Resolution: {{ $package->resolution }}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-                    <a href="{{ route('viewPayment') }}">
-                        <button type="button" value="back" class="btn btn-lg btn-outline-primary mt-4 text-center m-3">Back</button>
-                    </a>
+                        @endforeach
+                    @endif
+                    <div class="d-flex justify-content-center">
+                        <a href="{{ route('viewPayment') }}">
+                            <button type="button" value="back" class="btn mt-4 text-center m-3 text-white" style="background-color: black;">Back</button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -38,9 +38,18 @@ class profileController extends Controller
 
     public function homeProfile(Request $request) {
         $user = $request->user();
-        $profile = $request->profileID;
-
-        return View::make('user.index')->with(compact('profile', 'user'));
+        $number = $request->profileID[-1];
+        $profile = $request->profileID[$number*2-1]; 
+        $noti = DB::table('profiles') -> join('temp_notis', function($join) use($profile){
+                                        $join->on('profiles.id', '=', 'temp_notis.profileID')
+                                             ->where('temp_notis.profileID','=', $profile);
+                                        })
+                                        -> select('temp_notis.*')
+                                        -> join('temp_noti_contents', 'temp_notis.notiID', '=', 'temp_noti_contents.id')
+                                        -> select('temp_notis.seen', 'temp_noti_contents.head', 'temp_noti_contents.text')
+                                        -> get();
+        dd($noti);
+        return View::make('user.index')->with(compact( 'user', 'profile', 'noti'));
     }
 
     public function dropProfile(Request $request) {

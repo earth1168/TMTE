@@ -40,79 +40,89 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 
                 <div class="container">
-                    <div class="text-dark fs-1">Edit a profile</div><br>
+                    
                     @if (session('warningMessage'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
                             {{ session('warningMessage') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
+                    <div class="d-flex justify-content-center">
+                        <div class="card m-3" style="width: 50rem;">
+                            <div class="card-header">
+                                <div class="d-flex justify-content-center">
+                                    <div class="text-dark fs-1">Edit a profile</div><br>
+                                </div>  
+                            </div>
+                            <div class="card-body">
+                                <form action="{{ route('edit') }}" method="post">
+                                    @csrf
+                                    <div class="mt-4">
+                                        <label for="profileName">Profile Name</label><br>
+                                        <input type="text" id="profileName" name="profileName" value="{{ $query->profileName }}">
+                                        <input type="hidden" id="oldProfileName" name="oldProfileName" value="{{ $query->profileName }}">
+                                    </div>
+                                    @error('profileName')
+                                        <span class="text-danger my-2">{{ message }}</span>
+                                    @enderror
 
-                    <form action="{{ route('edit') }}" method="post">
-                        @csrf
-                        <div class="mt-4">
-                            <label for="profileName">Profile Name</label><br>
-                            <input type="text" id="profileName" name="profileName" value="{{ $query->profileName }}">
-                            <input type="hidden" id="oldProfileName" name="oldProfileName" value="{{ $query->profileName }}">
+                                    <div class="mt-4">
+                                        <label for="language">Language</label><br>
+                                        <select name="language" id="language">
+                                            @if ($query->language == "Thai")
+                                                <option value="Thai" selected>Thai</option>
+                                            @else
+                                                <option value="Thai">Thai</option>
+                                            @endif
+                                            @if ($query->language == "English")
+                                                <option value="English" selected>English</option>
+                                            @else
+                                                <option value="English">English</option>
+                                            @endif
+                                            @if ($query->language == "Japanese")
+                                                <option value="Japanese" selected>Japanese</option>
+                                            @else
+                                                <option value="Japanese">Japanese</option>
+                                            @endif
+                                        </select>
+                                    </div>
+
+                                    <div class="mt-4">
+                                        @if  ($query->playNext)
+                                            <input type="checkbox" id="playNext" name="playNext" value="TRUE" checked>
+                                        @elseif (!$query->playNext)
+                                            <input type="checkbox" id="playNext" name="playNext" value="TRUE">
+                                        @endif
+                                        <label class="mx-3 for="playNext">Play next video</label>
+                                    </div>
+
+                                    <div class="mt-4">
+                                        @if  ($query->playTrailer)
+                                            <input type="checkbox" id="playTrailer" name="playTrailer" value="TRUE" checked>
+                                        @elseif (!$query->playTrailer)
+                                            <input type="checkbox" id="playTrailer" name="playTrailer" value="TRUE">
+                                        @endif
+                                        <label class="mx-3 for="playTrailer">Play a trailer</label>
+                                    </div>
+
+                                    <div class="mt-4">
+                                        @if  ($query->kidUser)
+                                            <input type="checkbox" id="kidUser" name="kidUser" value="TRUE" checked>
+                                        @elseif (!$query->kidUser)
+                                            <input type="checkbox" id="kidUser" name="kidUser" value="TRUE">
+                                        @endif
+                                        <label class="mx-3 for="kidUser">Kid user</label>
+                                    </div>
+
+                                    <a href="{{ route('dashboard') }}">
+                                        <button type="button" value="back" class="btn mt-4 text-center text-white m-3" style="background-color: black">Back</button>
+                                    </a>
+                                    <button type="submit" value="Edit" class="btn mt-4 text-center text-white m-3" style="background-color: black">Edit</button>
+                                
+                                </form>
+                            </div>
                         </div>
-                        @error('profileName')
-                            <span class="text-danger my-2">{{ message }}</span>
-                        @enderror
-
-                        <div class="mt-4">
-                            <label for="language">Language</label><br>
-                            <select name="language" id="language">
-                                @if ($query->language == "Thai")
-                                    <option value="Thai" selected>Thai</option>
-                                @else
-                                    <option value="Thai">Thai</option>
-                                @endif
-                                @if ($query->language == "English")
-                                    <option value="English" selected>English</option>
-                                @else
-                                    <option value="English">English</option>
-                                @endif
-                                @if ($query->language == "Japanese")
-                                    <option value="Japanese" selected>Japanese</option>
-                                @else
-                                    <option value="Japanese">Japanese</option>
-                                @endif
-                            </select>
-                        </div>
-
-                        <div class="mt-4">
-                            @if  ($query->playNext)
-                                <input type="checkbox" id="playNext" name="playNext" value="TRUE" checked>
-                            @elseif (!$query->playNext)
-                                <input type="checkbox" id="playNext" name="playNext" value="TRUE">
-                            @endif
-                            <label for="playNext">Play next video</label>
-                        </div>
-
-                        <div class="mt-4">
-                            @if  ($query->playTrailer)
-                                <input type="checkbox" id="playTrailer" name="playTrailer" value="TRUE" checked>
-                            @elseif (!$query->playTrailer)
-                                <input type="checkbox" id="playTrailer" name="playTrailer" value="TRUE">
-                            @endif
-                            <label for="playTrailer">Play a trailer</label>
-                        </div>
-
-                        <div class="mt-4">
-                            @if  ($query->kidUser)
-                                <input type="checkbox" id="kidUser" name="kidUser" value="TRUE" checked>
-                            @elseif (!$query->kidUser)
-                                <input type="checkbox" id="kidUser" name="kidUser" value="TRUE">
-                            @endif
-                            <label for="kidUser">Kid user</label>
-                        </div>
-
-                        <a href="{{ route('dashboard') }}">
-                            <button type="button" value="back" class="btn btn-lg btn-outline-primary mt-4 text-center m-3">Back</button>
-                        </a>
-                        <button type="submit" value="Edit" class="btn btn-lg btn-outline-primary mt-4 text-center m-3">Edit</button>
-                        
-                    </form>
+                    </div>
                 </div>
 
             </div>

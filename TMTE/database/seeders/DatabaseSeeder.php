@@ -75,8 +75,7 @@ class DatabaseSeeder extends Seeder
                 'language' => 'Thai'
             ]
         );
-
-        DB::table('notifications') -> insert(
+        DB::table('notifications') -> insert([
             [
                 'adminid' => 1,
                 'firstname' => 'thiji',
@@ -87,11 +86,14 @@ class DatabaseSeeder extends Seeder
         );
         $qnoti = DB::table('notifications') -> first();
         $qprofile = DB::table('profiles') -> first();
+
         DB::table('notificationlogs') -> insert(
             [
                 'profileID' => $qprofile -> id,
                 'NotiID' => $qnoti -> id
             ]
         );
+
+        
     }
 }

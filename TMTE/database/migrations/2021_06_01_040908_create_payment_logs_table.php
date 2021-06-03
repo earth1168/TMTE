@@ -16,9 +16,10 @@ class CreatePaymentLogsTable extends Migration
         Schema::create('payment_logs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('userID');
+            $table->string('cardID');
             $table->timestamp('paymentDate', $precision = 0);
             $table->timestamps();
-            $table->foreign('userID')->references('id')->on('users');
+            $table->foreign('userID')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -42,6 +42,7 @@
     <div class="py-12">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <h1>{{ $profile }}</h1>
 
                 <section class="thumbSection">
                     <h2 class="thumbTitle">Popular Now</h2>

@@ -39,11 +39,23 @@ Route::post('/addpayment',[paymentcontroller :: class, 'addpay'])
 ->middleware('userMW')
 ->name('addpayment');
 
+Route::post('/dropCreditCard', [paymentcontroller::class, 'deleteCreditCard'])
+->middleware('userMW')
+->name('dropCreditCard');
+
+Route::get('/paymentEdit', [paymentcontroller::class, 'viewEditCreditCard'])
+->middleware('userMW')
+->name('toEditPayment');
+
+Route::post('/paymentEdited', [paymentcontroller::class, 'editCreditCard'])
+->middleware('userMW')
+->name('editPayment');
+
 Route::get('/payment/package', [paymentcontroller::class, 'viewPackage'])
 ->middleware('userMW')
 ->name('viewPackage');
 
-Route::get('/payment/addPackage', [paymentcontroller::class, 'createPaymentLog'])
+Route::post('/payment/addPackage', [paymentcontroller::class, 'createPaymentLog'])
 ->middleware('userMW')
 ->name('addPackage');
 
@@ -69,6 +81,7 @@ Route::middleware(['userMW'])->group(function(){
     Route::get('/dashboard/profileEdit', [profileController::class, 'toEditProfile'])->name('editProfile');
     Route::post('/dashboard/edit', [profileController::class, 'editProfile'])->name('edit');    
     Route::post('/user', [profileController::class, 'homeProfile'])->name('userPage');
+    Route::get('user/noti', [profileController::class, '']) -> name('userNoti');
 });
 
 Route::middleware(['adminMW']) -> group(function(){
@@ -78,3 +91,5 @@ Route::middleware(['adminMW']) -> group(function(){
 
  
 Route::get('/mediaAd',[mediaAdminController:: class, 'index']);
+Route::get('/mediaAd/mediaform',[mediaAdminController:: class, 'media']);
+Route::get('/mediaAd/licenseform',[mediaAdminController:: class, 'license']);
