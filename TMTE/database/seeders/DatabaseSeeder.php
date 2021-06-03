@@ -83,7 +83,9 @@ class DatabaseSeeder extends Seeder
                 'role' => 'mediaAdmin',
                 'description' => 'หนังดี'
             ]
-        );
+        ]);
+
+
         $qnoti = DB::table('notifications') -> first();
         $qprofile = DB::table('profiles') -> first();
 

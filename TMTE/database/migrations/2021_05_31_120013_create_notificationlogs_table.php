@@ -16,12 +16,13 @@ class CreateNotificationlogsTable extends Migration
     {
         Schema::create('notificationlogs', function (Blueprint $table) {
             $table -> id();
-            $table -> Integer('profileID');
-            $table -> unsignedBigInteger('NotiID');
+            $table -> Integer('profileID') -> nullable();
+            $table -> unsignedBigInteger('NotiID') -> nullable();
             $table -> tinyInteger('seen') -> default(0);
             $table->timestamps();
-            $table->foreign('NotiID')->references('id')->on('notifications');
-            $table->foreign('profileID')->references('id')->on('profiles');
+
+            $table->foreign('NotiID')->references('id')->on('notifications')-> onDelete('cascade');
+            $table->foreign('profileID')->references('id')->on('profiles') -> onDelete('cascade');
         });
     }
 

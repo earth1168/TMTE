@@ -30,6 +30,9 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="{{asset('./css/userHomepage/style.css')}}">
+    <!-- noti icon -->
+    <link rel="stylesheet" href="{{asset('./css/userHomepage/notiLayout.css')}}"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     @livewireStyles
 </head>
 
@@ -42,7 +45,11 @@
     <div class="py-12">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <h1>{{ $profile }}</h1>
+                <button type="button" class="icon-button">
+                    <span class="material-icons">notifications</span>
+                    <span class="icon-button__badge">{{$nNoti}}</span>
+                </button>
+                <h1>{{$noti[0]->seen}}</h1>
 
                 <section class="thumbSection">
                     <h2 class="thumbTitle">Popular Now</h2>
@@ -50,7 +57,7 @@
                     <div class="thumbTiles swiper-container">
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
-                            <!-- Slides --> 
+                            <!-- Slides -->
                             <div class="swiper-slide">
                                 <a class="thumbTile" href="#">
                                     <img class="thumbTile__image" src="https://i.ytimg.com/vi/E_wWsU3mxRI/maxresdefault.jpg" alt="sample1">
@@ -143,6 +150,7 @@
     <!-- Activation Script -->
     <script src="js/custom.js"></script>
     <script src="js/userHomepage/slide.js"></script>
+    
 
 </body>
 
