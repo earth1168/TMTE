@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Create Profile</title>
     <script src="{{ mix('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -31,7 +33,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="{{asset('./css/userHomepage/style.css')}}">
     <!-- noti icon -->
-    <link rel="stylesheet" href="{{asset('./css/userHomepage/notiLayout.css')}}"> 
+    <link rel="stylesheet" href="{{asset('./css/userHomepage/notiLayout.css')}}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     @livewireStyles
 </head>
@@ -45,12 +47,27 @@
     <div class="py-12">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <button type="button" class="icon-button">
-                    <span class="material-icons">notifications</span>
-                    <span class="icon-button__badge">{{$nNoti}}</span>
-                </button>
-                <h1>{{$noti}}</h1>
+                <div div class="wrapper">
+                    <div type="button" class="icon-button dropdown-toggle">
+                        <span class="material-icons">notifications</span>
+                        <span class="icon-button__badge" id="icon_buttonn">{{$nNoti}}</span>
+                    </div>
+                    <ul class="dropdown">
+                        <?php $i = 0; ?>
+                        @foreach($noti as $row)
+                        <?php $notiText = 'noti' . $i++; ?>
+                        @if($row->seen == 0)
+                        <li><button id="{{$notiText}}" class="text-left" NotilogID="{{$row->id}}" profileID="{{$profile}}" Notides="{{$row->description}}" NotiSeen="{{$row->seen}}" NotiID="{{$row->NotiID}}" style="color:black" onClick="foo(this.id)">{{$row->description}}</button></li>
+                        @else
+                        <li><button id="{{$notiText}}" class="seennoti text-left" NotilogID="{{$row->id}}" profileID="{{$profile}}" Notides="{{$row->description}}" NotiSeen="{{$row->seen}}" NotiID="{{$row->NotiID}}" style="color:black" onClick="foo(this.id)">{{$row->description}}</button></li>
+                        @endif
+                        @endforeach
+                    </ul>
 
+                </div>
+            </div>
+
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <section class="thumbSection">
                     <h2 class="thumbTitle">Popular Now</h2>
                     <br>
@@ -129,15 +146,19 @@
                     <br><br>
                 </section>
             </div>
+        </div>
 
-            <br>
-            <br>
+        <br>
+        <br>
 
+        <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <h1>asdasd</h1>
             </div>
-
         </div>
+    </div>
+
+    </div>
     </div>
     @livewireScripts
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
@@ -150,7 +171,29 @@
     <!-- Activation Script -->
     <script src="js/custom.js"></script>
     <script src="js/userHomepage/slide.js"></script>
-    
+    <script src="js/userHomepage/noti.js"></script>
+    <!--SweetAlert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+        var pID = "<?php echo "$profile" ?>";
+        setInterval(function() {
+            $.ajax({
+                url: "user/noti",
+                data: {
+                    pID: pID
+                },
+                success: function(data) {
+                    profile = data[0];
+                    noti = data[1];
+                    nNoti = data[2];
+                    console.log(noti);
+                    $('#icon_buttonn').text(nNoti);
+                }
+            });
+        }, 1000);
+    </script>
+
 
 </body>
 

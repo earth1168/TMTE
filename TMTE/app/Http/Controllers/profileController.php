@@ -37,8 +37,7 @@ class profileController extends Controller
         return redirect(route('profileView'))->with('warningMessage', 'Invalid profile name, You are already has this profile name');
     }
 
-    public function homeProfile(Request $request) {
-        $user = $request->user();
+    public function homeProfile(Request $request){
         $number = $request->profileID[-1];
         $profile = $request->profileID[$number*2-1]; 
         $noti = DB::table('profiles') -> join('notificationlogs', function($join) use($profile){
@@ -47,12 +46,29 @@ class profileController extends Controller
                                         })
                                         -> select('notificationlogs.*')
                                         -> join('notifications', 'notificationlogs.NotiID', '=', 'notifications.id')                           
-                                        -> select('notificationlogs.seen', 'notifications.description')
-                                        -> where('notificationlogs.seen', '=', '0')
+                                        -> select('notificationlogs.id', 'notificationlogs.NotiID', 'notificationlogs.seen', 'notifications.description')
+                                        
                                         -> get();
         $nNoti = count($noti);
         // dd($noti);
-        return View::make('user.index')->with(compact( 'user', 'profile', 'noti', 'nNoti'));
+        return View::make('user.index')->with(compact('profile', 'noti', 'nNoti'));
+    }
+
+    public function getNoti(Request $request){
+        $profile = $request->pID;
+        $noti = DB::table('profiles') -> join('notificationlogs', function($join) use($profile){
+            $join->on('profiles.id', '=', 'notificationlogs.profileID')
+                 ->where('notificationlogs.profileID','=', $profile);
+            })
+            -> select('notificationlogs.*')
+            -> join('notifications', 'notificationlogs.NotiID', '=', 'notifications.id')                           
+            -> select('notificationlogs.id', 'notificationlogs.NotiID', 'notificationlogs.seen', 'notifications.description')
+            -> where('notificationlogs.seen', '=', '0')
+            -> get();
+
+        $nNoti = count($noti); 
+
+        return response()->json([$profile, $noti, $nNoti]);
     }
 
     public function dropProfile(Request $request) {

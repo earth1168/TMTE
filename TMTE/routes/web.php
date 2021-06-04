@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\notificationform;
+use App\Http\Controllers\notiLogController;
 use App\Models\User;
 use App\Http\Controllers\paymentcontroller;
 
@@ -73,6 +74,8 @@ Route::get('/admin', [adminController::class, 'index'])
 ->name('adminPage');
 
 
+Route::post('user/noti/setSeen', [notiLogController::class, 'setSeen']) -> name('setSeenNoti');
+
 //User role
 Route::middleware(['userMW'])->group(function(){
     Route::get('/dashboard/profileView', [profileController::class, 'profileView'])->name('profileView');
@@ -81,7 +84,8 @@ Route::middleware(['userMW'])->group(function(){
     Route::get('/dashboard/profileEdit', [profileController::class, 'toEditProfile'])->name('editProfile');
     Route::post('/dashboard/edit', [profileController::class, 'editProfile'])->name('edit');    
     Route::post('/user', [profileController::class, 'homeProfile'])->name('userPage');
-    Route::get('user/noti', [profileController::class, '']) -> name('userNoti');
+    Route::get('user/noti', [profileController::class, 'getNoti']) -> name('userNoti');
+    
 });
 
 Route::middleware(['adminMW']) -> group(function(){

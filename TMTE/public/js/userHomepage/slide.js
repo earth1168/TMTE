@@ -2,7 +2,7 @@ var mySwiper = new Swiper('.swiper-container', {
     // Optional parameters
     spaceBetween: 1,
     slidesPerView: 2,
-    loop: true,
+    loop: false,
     freeMode: true,
     loopAdditionalSlides: 5,
     speed: 500,
