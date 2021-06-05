@@ -7,11 +7,9 @@ $(function () {
 
 function foo(id) {
   var NotilogID = document.getElementById(id).getAttribute('NotilogID');
-  var profileID = document.getElementById(id).getAttribute('profileID');
-  var NotiID = document.getElementById(id).getAttribute('NotiID');
   var NotiSeen = document.getElementById(id).getAttribute('NotiSeen');
   var Notides = document.getElementById(id).getAttribute('Notides');
-  console.log(NotilogID, profileID, NotiID, NotiSeen, Notides);
+  console.log(NotilogID, NotiSeen, Notides);
 
   swal(Notides);
 

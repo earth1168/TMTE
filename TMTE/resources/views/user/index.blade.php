@@ -24,6 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
     <!-- Plugin'stylesheets  -->
     <link rel="stylesheet" href="{{asset('./plugins/aos/aos.min.css')}}">
     <!-- Vendor stylesheets  -->
@@ -34,6 +35,9 @@
     <link rel="stylesheet" href="{{asset('./css/userHomepage/style.css')}}">
     <!-- noti icon -->
     <link rel="stylesheet" href="{{asset('./css/userHomepage/notiLayout.css')}}">
+    <link rel="stylesheet" href="{{asset('./css/userHomepage/searchbar.css')}}">
+    <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     @livewireStyles
 </head>
@@ -43,30 +47,45 @@
     <div>
         @livewire('navigation-menu')
     </div><br>
+    <span>profile {{$profile}}</span>
+    <form class="expanding-search-form">
+                <div class="search-dropdown">
+                    <button class="button dropdown-toggle" type="button">   
+                        <span class="toggle-active">Everything</span>
+                        <span class="ion-arrow-down-b"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="menu-active"><a href="#">Everything</a></li>
+                        <li><a href="#">Movie</a></li>
+                        <li><a href="#">Series</a></li>
+                    </ul>
+                </div>
+                <input class="search-input" id="global-search" type="search" placeholder="Search">
+                <label class="search-label" for="global-search">
+                    <span class="sr-only">Global Search</span>
+                </label>
+                <button class="button search-button" type="button">
+                    <span class="icon ion-search">
+                        <span class="sr-only">Search</span>
+                    </span>
+                </button>
+            </form>
+
 
     <div class="py-12">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div div class="wrapper">
-                    <div type="button" class="icon-button dropdown-toggle">
-                        <span class="material-icons">notifications</span>
-                        <span class="icon-button__badge" id="icon_buttonn">{{$nNoti}}</span>
-                    </div>
-                    <ul class="dropdown">
-                        <?php $i = 0; ?>
-                        @foreach($noti as $row)
-                        <?php $notiText = 'noti' . $i++; ?>
-                        @if($row->seen == 0)
-                        <li><button id="{{$notiText}}" class="text-left" NotilogID="{{$row->id}}" profileID="{{$profile}}" Notides="{{$row->description}}" NotiSeen="{{$row->seen}}" NotiID="{{$row->NotiID}}" style="color:black" onClick="foo(this.id)">{{$row->description}}</button></li>
-                        @else
-                        <li><button id="{{$notiText}}" class="seennoti text-left" NotilogID="{{$row->id}}" profileID="{{$profile}}" Notides="{{$row->description}}" NotiSeen="{{$row->seen}}" NotiID="{{$row->NotiID}}" style="color:black" onClick="foo(this.id)">{{$row->description}}</button></li>
-                        @endif
-                        @endforeach
-                    </ul>
 
+            <div div class="wrapper">
+                <div type="button" class="icon-button dropdown-toggle">
+                    <span class="material-icons">notifications</span>
+                    <span class="icon-button__badge" id="icon_buttonn"></span>
                 </div>
+                <ul class="dropdown">
+                    
+                </ul>
             </div>
 
+        
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <section class="thumbSection">
                     <h2 class="thumbTitle">Popular Now</h2>
@@ -158,8 +177,7 @@
         </div>
     </div>
 
-    </div>
-    </div>
+
     @livewireScripts
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
@@ -172,6 +190,9 @@
     <script src="js/custom.js"></script>
     <script src="js/userHomepage/slide.js"></script>
     <script src="js/userHomepage/noti.js"></script>
+    <script src="js/userHomepage/searchbar.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
     <!--SweetAlert-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -184,11 +205,10 @@
                     pID: pID
                 },
                 success: function(data) {
-                    profile = data[0];
-                    noti = data[1];
-                    nNoti = data[2];
-                    console.log(noti);
-                    $('#icon_buttonn').text(nNoti);
+                    var allNoti = $(data).find(".text-left").length;
+                    var seenNoti = $(data).find(".seennoti").length;
+                    $('#icon_buttonn').text(allNoti-seenNoti);
+                    $('.dropdown').html(data);
                 }
             });
         }, 1000);

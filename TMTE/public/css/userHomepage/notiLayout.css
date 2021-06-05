@@ -42,13 +42,13 @@ ul.dropdown {
   right:16%;
   top:60px;
   display: none;
-
   min-width: 274px;
   padding: 0;
-  border: 2px solid; 
+  border: 1px solid; 
   border-color:darkcyan;
   border-radius: 0 0 .2em .2em;
   box-shadow: 0 1px 1px rgba(50,50,50,0.1); 
+  z-index: 42222;
     
 }
   
@@ -76,16 +76,7 @@ ul.dropdown li button {
 }
 
 .seennoti{
-  text-decoration: none;
-  padding: .5em 1em;
-  display: inline-block;
-  color:black;
-  font-size: 1.2em; 
-  width: 300px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  background-color:#dddddd;
+  opacity: 0.3;
 }
 
 .dropdown-toggle::after{

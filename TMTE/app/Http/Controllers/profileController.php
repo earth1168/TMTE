@@ -40,18 +40,8 @@ class profileController extends Controller
     public function homeProfile(Request $request){
         $number = $request->profileID[-1];
         $profile = $request->profileID[$number*2-1]; 
-        $noti = DB::table('profiles') -> join('notificationlogs', function($join) use($profile){
-                                        $join->on('profiles.id', '=', 'notificationlogs.profileID')
-                                             ->where('notificationlogs.profileID','=', $profile);
-                                        })
-                                        -> select('notificationlogs.*')
-                                        -> join('notifications', 'notificationlogs.NotiID', '=', 'notifications.id')                           
-                                        -> select('notificationlogs.id', 'notificationlogs.NotiID', 'notificationlogs.seen', 'notifications.description')
-                                        
-                                        -> get();
-        $nNoti = count($noti);
-        // dd($noti);
-        return View::make('user.index')->with(compact('profile', 'noti', 'nNoti'));
+        
+        return View::make('user.index')->with(compact('profile'));
     }
 
     public function getNoti(Request $request){
@@ -63,12 +53,22 @@ class profileController extends Controller
             -> select('notificationlogs.*')
             -> join('notifications', 'notificationlogs.NotiID', '=', 'notifications.id')                           
             -> select('notificationlogs.id', 'notificationlogs.NotiID', 'notificationlogs.seen', 'notifications.description')
-            -> where('notificationlogs.seen', '=', '0')
             -> get();
 
         $nNoti = count($noti); 
+        $i = 0;
+        $res = null;
+        foreach($noti as $row){
+            $notiText = 'noti' . $i++;
+            if($row->seen == 0){
+                $res.='<li><button id="' . $notiText . '" class="text-left" NotilogID="' . $row->id . '" NotiSeen="' . 
+                $row->seen . '" Notides="' . $row->description . '" style="color:black" onClick="foo(this.id)">' . $row->description . ' </button></li>';    
+            }else
+                $res.='<li><button id="' . $notiText . '" class="seennoti text-left" NotilogID="' . $row->id . '" NotiSeen="'
+                 . $row->seen . '" Notides="' . $row->description .'" style="color:black" onClick="foo(this.id)">' . $row->description . ' </button></li>';
+        }
 
-        return response()->json([$profile, $noti, $nNoti]);
+        echo $res;
     }
 
     public function dropProfile(Request $request) {
@@ -116,19 +116,22 @@ class profileController extends Controller
         return redirect()->back()->with('warningMessage', 'Invalid profile name, You are already has this profile name');
      }
 
-     public function notification($profile) {
-        
-        $noti = DB::table('profiles') -> join('temp_notis', function($join) use($profile){
-            $join->on('profiles.id', '=', 'temp_notis.profileID')
-                 ->where('temp_notis.profileID','=', $profile);
-            })
-            -> select('temp_notis.*')
-            -> join('temp_noti_contents', 'temp_notis.notiID', '=', 'temp_noti_contents.id')
-            -> select('temp_notis.seen', 'temp_noti_contents.head', 'temp_noti_contents.text')
-            -> get();
 
-        $nNoti = count($noti);
-        return View::make('user.notiPage')->with(compact('profile', 'noti', 'nNoti'));
-     }
+    //  public function homeProfile(Request $request){
+    //     $number = $request->profileID[-1];
+    //     $profile = $request->profileID[$number*2-1]; 
+    //     $noti = DB::table('profiles') -> join('notificationlogs', function($join) use($profile){
+    //                                     $join->on('profiles.id', '=', 'notificationlogs.profileID')
+    //                                          ->where('notificationlogs.profileID','=', $profile);
+    //                                     })
+    //                                     -> select('notificationlogs.*')
+    //                                     -> join('notifications', 'notificationlogs.NotiID', '=', 'notifications.id')                           
+    //                                     -> select('notificationlogs.id', 'notificationlogs.NotiID', 'notificationlogs.seen', 'notifications.description')
+                                        
+    //                                     -> get();
+    //     $nNoti = count($noti);
+    //     // dd($noti);
+    //     return View::make('user.index')->with(compact('profile', 'noti', 'nNoti'));
+    // }
 
 }
