@@ -75,26 +75,26 @@ class DatabaseSeeder extends Seeder
                 'language' => 'Thai'
             ]
         );
-        DB::table('notifications') -> insert([
-            [
-                'adminid' => 1,
-                'firstname' => 'thiji',
-                'lastname' => 'za',
-                'role' => 'mediaAdmin',
-                'description' => 'หนังดี'
-            ]
-        ]);
+        // DB::table('notifications') -> insert([
+        //     [
+        //         'adminid' => 1,
+        //         'firstname' => 'thiji',
+        //         'lastname' => 'za',
+        //         'role' => 'mediaAdmin',
+        //         'description' => 'หนังดี'
+        //     ]
+        // ]);
 
 
-        $qnoti = DB::table('notifications') -> first();
-        $qprofile = DB::table('profiles') -> first();
+        // $qnoti = DB::table('notifications') -> first();
+        // $qprofile = DB::table('profiles') -> first();
 
-        DB::table('notificationlogs') -> insert(
-            [
-                'profileID' => $qprofile -> id,
-                'NotiID' => $qnoti -> id
-            ]
-        );
+        // DB::table('notificationlogs') -> insert(
+        //     [
+        //         'profileID' => $qprofile -> id,
+        //         'NotiID' => $qnoti -> id
+        //     ]
+        // );
 
         
     }

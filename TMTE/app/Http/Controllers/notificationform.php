@@ -22,19 +22,17 @@ class notificationform extends Controller
     public function notilog(Request $request){
         $request -> validate([
             'Description' => 'required|max:255'
-        ]);
-    
-        $noti = new notification;
-        
-        $noti -> adminid = Auth:: user() -> id;
-        $noti -> firstname = Auth:: user() -> firstName;
-        $noti -> lastname = Auth:: user() -> lastName;
-        $noti -> role = Auth:: user() -> role;
-        $noti -> description = $request -> Description;
-        
+        ]);   
 
-        $qnoti = DB::table('notifications') -> max('id'); 
         if(isset($_POST['check'])){
+            $noti = new notification;
+            $noti -> adminid = Auth:: user() -> id;
+            $noti -> firstname = Auth:: user() -> firstName;
+            $noti -> lastname = Auth:: user() -> lastName;
+            $noti -> role = Auth:: user() -> role;
+            $noti -> description = $request -> Description;
+            $noti -> save();
+            $qnoti = DB::table('notifications') -> max('id'); 
             for($i = 0;$i <count($_POST['check']); $i++){
                 $notilog = new notificationlog;
                 $nub = $_POST['check'];
@@ -42,7 +40,7 @@ class notificationform extends Controller
                 $notilog -> profileID = $nub[$i];
                 $notilog -> save();
             }
-            $noti -> save();
+            
         }else return redirect()-> back()-> with('alert',"please select at least one profile!");
         
         return redirect()-> back()-> with('success',"Send");
