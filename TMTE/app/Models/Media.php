@@ -20,7 +20,9 @@ class Media extends Model
         'scriptwriter',
         'creator',
         'mediaType',
-        'mediaTime'    
+        'mediaTime',
+        'mediaImg',
+        'mediaSource'
     ];
     
 }

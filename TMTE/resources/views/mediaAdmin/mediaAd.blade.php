@@ -19,6 +19,9 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('./css/mediaAd/admin-2.min.css')}}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </head>
 
@@ -32,210 +35,6 @@
 
             <!-- Main Content -->
             <div id="content">
-
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-
-                    </ul>
-
-                </nav>
-                <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -386,22 +185,20 @@
                                         <span class="text">Add Media</span>
                                     </a>
                                 
-                  
                                     </div>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Title</th>
+                                            <th>Studio</th>
+                                            <th>Rating</th>
+                                            <th>Director</th>
+                                            <th>Time</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -411,138 +208,152 @@
                                             <th>Office</th>
                                             <th>Age</th>
                                             <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    @foreach($medias as $media)
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td>{{$media -> mediaName}}</td>
+                                            <td>{{$media -> studioName}}</td>
+                                            <td>{{$media -> rating}}</td>
+                                            <td>{{$media -> director}}</td>
+                                            <td>{{$media -> mediaTime}}</td>
+                                            <td>
+                                            <i class="fas fa-pen-alt" data-toggle="modal" data-target="#myModal-{{$media -> id}}"></i>
+                                            <i class="fas fa-trash-alt"  data-toggle="modal" data-target="#myModalDelete-{{$media -> id}}"></i>
+                                            </td>
+                                            
+                                              <!-- Modal -->
+                                                <div class="modal fade" id="myModal-{{$media -> id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                    <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                        <div class = "modal-title">
+                                                        <h4>Update data</h4>
+                                                        </div>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @if(session("success"))
+                                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                                <strong>Success!</strong> You can go back to home page.
+                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            @endif
+                                                        <form class="form-detail" action="/mediaAd/mediaUpdate" method="post" id="myform"> 
+                                                        @csrf
+                                                            <div class="form-group d-none">
+                                                                <label>ID</label>
+                                                                <input type="text" class="form-control"  name="id" value="{{$media -> id}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Media Name</label>
+                                                               
+                                                                <input type="text" class="form-control" id="title"  name="title" placeholder="{{$media -> mediaName}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Studio</label>
+                                                                <input type="text" class="form-control"  name="studio" placeholder="{{$media -> studioName}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Rating</label>
+                                                                    <select name="rating">
+                                                                        <option value="{{$media -> rating}}">{{$media -> rating}}</option>
+                                                                        <option value="G">G</option>
+                                                                        <option value="PG">PG</option>
+                                                                        <option value="PG-13">PG-13</option>
+                                                                        <option value="R">R</option>
+                                                                        <option value="NC-17">NC-17</option>
+                                                                    </select>    
+                                                                    </div>
+                                                            <div class="form-group">
+                                                                <label>Movie Synopsis </label>
+                                                                <input type="text" class="form-control"  name="studio" placeholder="{{$media -> plot}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Actor</label>
+                                                                <input type="text" class="form-control"  name="studio" placeholder="{{$media -> actor}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Date</label>
+                                                                <input type="text" class="form-control"  name="studio" placeholder="{{$media -> date}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Director</label>
+                                                                <input type="text" class="form-control"  name="studio" placeholder="{{$media -> director}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Scriptwriter</label>
+                                                                <input type="text" class="form-control"  name="studio" placeholder="{{$media -> scriptwriter}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Creator</label>
+                                                                <input type="text" class="form-control"  name="studio" placeholder="{{$media -> creator}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Media type</label>
+                                                                    <select name="type">
+                                                                        <option value="{{$media -> mediaType}}" >{{$media -> mediaType}}</option>
+                                                                        <option value="movie">Movie</option>
+                                                                        <option value="serie">Serie</option>
+                                                                    </select> 
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Movie Time</label>
+                                                                <input type="text" class="form-control"  name="studio" placeholder="{{$media -> time}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Media Image</label>
+                                                                <input type="text" class="form-control"  name="studio" placeholder="{{$media -> mediaImg}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Media Source</label>
+                                                                <input type="text" class="form-control"  name="studio" placeholder="{{$media -> mediaSource}}">
+                                                            </div>
+                                                        
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        <input type="submit" class="btn btn-primary" value = "Save changes">
+                                                        </form>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal" tabindex="-1" role="dialog" id="myModalDelete-{{$media -> id}}">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Delete Media</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        <h6>Are you sure you want to delete data? </h6>
+                                                        <form class="form-detail" action="/mediaAd/mediaDelete" method="post" id="myform"> 
+                                                        @csrf
+                                                        <div class="form-group d-none">
+                                                                <label>ID</label>
+                                                                <input type="text" class="form-control"  name="id" value="{{$media -> id}}">
+                                                            </div>
+                                                       
+                                                        
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        <input type="submit" class="btn btn-danger" value = "Delete">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        </div>
+                                                        </form>
+                                                        </div>
+                                                    </div>
+                                                    </div>
                                         </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td>2012/03/29</td>
-                                            <td>$433,060</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                            <td>2008/11/28</td>
-                                            <td>$162,700</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Brielle Williamson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>New York</td>
-                                            <td>61</td>
-                                            <td>2012/12/02</td>
-                                            <td>$372,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Herrod Chandler</td>
-                                            <td>Sales Assistant</td>
-                                            <td>San Francisco</td>
-                                            <td>59</td>
-                                            <td>2012/08/06</td>
-                                            <td>$137,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Rhona Davidson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>Tokyo</td>
-                                            <td>55</td>
-                                            <td>2010/10/14</td>
-                                            <td>$327,900</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Paul Byrd</td>
-                                            <td>Chief Financial Officer (CFO)</td>
-                                            <td>New York</td>
-                                            <td>64</td>
-                                            <td>2010/06/09</td>
-                                            <td>$725,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gloria Little</td>
-                                            <td>Systems Administrator</td>
-                                            <td>New York</td>
-                                            <td>59</td>
-                                            <td>2009/04/10</td>
-                                            <td>$237,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bradley Greer</td>
-                                            <td>Software Engineer</td>
-                                            <td>London</td>
-                                            <td>41</td>
-                                            <td>2012/10/13</td>
-                                            <td>$132,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Dai Rios</td>
-                                            <td>Personnel Lead</td>
-                                            <td>Edinburgh</td>
-                                            <td>35</td>
-                                            <td>2012/09/26</td>
-                                            <td>$217,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jenette Caldwell</td>
-                                            <td>Development Lead</td>
-                                            <td>New York</td>
-                                            <td>30</td>
-                                            <td>2011/09/03</td>
-                                            <td>$345,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Yuri Berry</td>
-                                            <td>Chief Marketing Officer (CMO)</td>
-                                            <td>New York</td>
-                                            <td>40</td>
-                                            <td>2009/06/25</td>
-                                            <td>$675,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Caesar Vance</td>
-                                            <td>Pre-Sales Support</td>
-                                            <td>New York</td>
-                                            <td>21</td>
-                                            <td>2011/12/12</td>
-                                            <td>$106,450</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Doris Wilder</td>
-                                            <td>Sales Assistant</td>
-                                            <td>Sidney</td>
-                                            <td>23</td>
-                                            <td>2010/09/20</td>
-                                            <td>$85,600</td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                                     </div>
@@ -605,102 +416,7 @@
                                             <td>2011/04/25</td>
                                             <td>$320,800</td>
                                         </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td>2012/03/29</td>
-                                            <td>$433,060</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                            <td>2008/11/28</td>
-                                            <td>$162,700</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Brielle Williamson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>New York</td>
-                                            <td>61</td>
-                                            <td>2012/12/02</td>
-                                            <td>$372,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Herrod Chandler</td>
-                                            <td>Sales Assistant</td>
-                                            <td>San Francisco</td>
-                                            <td>59</td>
-                                            <td>2012/08/06</td>
-                                            <td>$137,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Rhona Davidson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>Tokyo</td>
-                                            <td>55</td>
-                                            <td>2010/10/14</td>
-                                            <td>$327,900</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Colleen Hurst</td>
-                                            <td>Javascript Developer</td>
-                                            <td>San Francisco</td>
-                                            <td>39</td>
-                                            <td>2009/09/15</td>
-                                            <td>$205,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sonya Frost</td>
-                                            <td>Software Engineer</td>
-                                            <td>Edinburgh</td>
-                                            <td>23</td>
-                                            <td>2008/12/13</td>
-                                            <td>$103,600</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jena Gaines</td>
-                                            <td>Office Manager</td>
-                                            <td>London</td>
-                                            <td>30</td>
-                                            <td>2008/12/19</td>
-                                            <td>$90,560</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Quinn Flynn</td>
-                                            <td>Support Lead</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td>2013/03/03</td>
-                                            <td>$342,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Donna Snider</td>
-                                            <td>Customer Support</td>
-                                            <td>New York</td>
-                                            <td>27</td>
-                                            <td>2011/01/25</td>
-                                            <td>$112,000</td>
-                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -758,8 +474,15 @@
     <script src="{{asset('./css/mediaAd/js/demo/datatables-demo.js')}}"></script>
 
         <script>
-            $('#MyModal').on('shown.bs.modal', function() {
-            $('#myInput').focus()
+            $('#myModel').on('show', function(e) {
+                var link     = e.relatedTarget(),
+                    modal    = $(this),
+                    name = link.data("name"),
+                    studio    = link.data("studio");
+
+                modal.find("#name").val(name);
+                modal.find("#studio").val(studio);
+            });
             })
         </script>
     

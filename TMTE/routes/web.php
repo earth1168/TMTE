@@ -97,3 +97,6 @@ Route::middleware(['adminMW']) -> group(function(){
 Route::get('/mediaAd',[mediaAdminController:: class, 'index']);
 Route::get('/mediaAd/mediaform',[mediaAdminController:: class, 'media']);
 Route::get('/mediaAd/licenseform',[mediaAdminController:: class, 'license']);
+Route::post('/mediaAd/mediaform/addMedia',[mediaAdminController:: class, 'addMedia']);
+Route::post('/mediaAd/mediaUpdate',[mediaAdminController:: class, 'updateMedia']);
+Route::post('/mediaAd/mediaDelete',[mediaAdminController:: class, 'deleteMedia']);

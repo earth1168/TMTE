@@ -27,6 +27,8 @@ class CreateMediaTable extends Migration
             $table ->string('creator');
             $table ->string('mediaType');
             $table ->time('mediaTime');
+            $table ->string('mediaImg');
+            $table ->string('mediaSource');
         });
     }
 
@@ -37,6 +39,10 @@ class CreateMediaTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('subtitle');  
+        Schema::dropIfExists('soundtrack');  
+        Schema::dropIfExists('caution');  
+        Schema::dropIfExists('category');  
         Schema::dropIfExists('media');
     }
 }
