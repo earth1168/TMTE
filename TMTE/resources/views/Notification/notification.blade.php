@@ -31,6 +31,10 @@
   
 <body class="font-sans antialiased bg-gray-100">
 
+    <div>
+        @livewire('navigation-menu')
+    </div><br>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow overflow-hidden shadow-xl sm:rounded-lg">
@@ -65,13 +69,7 @@
                                     </thead>
                                         
                                     <tbody>
-                                        <?php
-                                            $i = 1;
-                                        ?>
                                         @foreach($profile as $row)
-                                        <?php
-                                            $i++;
-                                        ?>
                                             <tr>
                                                 <td>
                                                 <div class="form-check">
@@ -94,6 +92,12 @@
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">Send</button>
                                 </div>
+                                
+                                @if(session("alert"))
+                                    <div class="col-4">
+                                        <div class="alert alert-danger">{{session('alert')}}</div>
+                                    </div>
+                                @endif
 
                                 @if(session("success"))
                                     <div class = "col-4">

@@ -43,7 +43,7 @@ class notificationform extends Controller
                 $notilog -> save();
             }
             $noti -> save();
-        }else return redirect()-> back()-> with('success',"please select at least one profile!");
+        }else return redirect()-> back()-> with('alert',"please select at least one profile!");
         
         return redirect()-> back()-> with('success',"Send");
     }
