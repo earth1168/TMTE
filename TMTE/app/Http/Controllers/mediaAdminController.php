@@ -17,6 +17,7 @@ class mediaAdminController extends Controller
 {
     public function index(){
         $media = Media::all();
+        
 
         $license = DB::table('license_details')
                     ->join('license_log', function ($join)  {

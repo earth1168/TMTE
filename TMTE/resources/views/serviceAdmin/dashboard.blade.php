@@ -66,11 +66,11 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Number of Media</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                                                Number of User</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$totalUser}}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-photo-video fa-3x text-gray-300"></i>
+                                            <i class="fas fa-users fa-3x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -84,11 +84,11 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            Number of Movies</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                                            Number of Media Admin</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$totalSer}}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-film fa-3x text-gray-300"></i>
+                                            <i class="fas fa-user-cog fa-3x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -100,12 +100,12 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            Number of Series</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">1}</div>
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                            Number of Service Admin</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$totalMedia}}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-tv fa-3x text-gray-300"></i>
+                                            <i class="fas fa-user-shield fa-3x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -121,11 +121,11 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Number of Licenses</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                                                Most of User are from</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$popular->country}}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-scroll fa-3x text-gray-300"></i>
+                                            <i class="fab fa-font-awesome-flag fa-3x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -150,17 +150,9 @@
                         <div class="card-header py-3">
                             <div class = "row">
                                 <div class = "col-xl-10 col-lg-4">
-                                    <h6 class="m-0 font-weight-bold text-primary">Media List</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">User list</h6>
                                 </div>
-                                    <div class = "col-xl-2 col-lg-1">
-                                    <a href = "/mediaAd/mediaform" type = "button"  class="btn btn-success btn-icon-split">
-                                        <span class="icon text-white-50">
-                                        <i class="fas fa-plus"></i>
-                                        </span>
-                                        <span class="text">Add Media</span>
-                                    </a>
-                                
-                                    </div>
+
                             </div>
                         </div>
                         <div class="card-body">
@@ -168,39 +160,40 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Title</th>
-                                            <th>Studio</th>
-                                            <th>Rating</th>
-                                            <th>Director</th>
-                                            <th>Time</th>
+                                            <th>Firstname</th>
+                                            <th>Lastname</th>
+                                            <th>Email</th>
+                                            <th>Country</th>
+                                            <th>Role</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
+                                            <th>Firstname</th>
+                                            <th>Lastname</th>
+                                            <th>Email</th>
+                                            <th>Country</th>
+                                            <th>Role</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                 
+                                 @foreach($users as $user)
                                         <tr>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
+                                            <td>{{$user -> firstName}}</td>
+                                            <td>{{$user -> lastName}}</td>
+                                            <td>{{$user -> email}}</td>
+                                            <td>{{$user -> country}}</td>
+                                            <td>{{$user -> role}}</td>
                                             <td>
-                                            <i class="fas fa-pen-alt" data-toggle="modal" style="color:#2271dd" data-target="#myModal"></i>
-                                            <i class="fas fa-trash-alt"  data-toggle="modal" style="color:red" data-target="#myModalDelete"></i>
+                                            
+                                            
+                                            <i class="fas fa-pen-alt" data-toggle="modal" style="color:#2271dd" data-target="#myModal-{{$user -> id}}"></i>
                                             </td>
                                             
                                               <!-- Modal -->
-                                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                <div class="modal fade" id="myModal-{{$user -> id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                                     <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -210,83 +203,27 @@
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            @if(session("success"))
-                                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                                <strong>Success!</strong> You can go back to home page.
-                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                          @endif 
-                                                        <form class="form-detail" action="/mediaAd/mediaUpdate" method="post" id="myform"> 
+                                                        <form class="form-detail" action="/serviceAdmin/userUpdate" method="post" id="myform"> 
                                                         @csrf
                                                             <div class="form-group d-none">
                                                                 <label>ID</label>
-                                                                <input type="text" class="form-control"  name="id" value="">
+                                                                <input type="text" class="form-control"  name="id" value="{{$user -> id}}">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Media Name</label>
-                                                               
-                                                                <input type="text" class="form-control" id="title"  name="title" placeholder="">
+                                                                <label>Firstname</label>
+                                                                <input type="text" class="form-control" id="firstname"  name="firstname" placeholder="{{$user -> firstName}}">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Studio</label>
-                                                                <input type="text" class="form-control"  name="studio" placeholder="">
+                                                                <label>Lastname</label>
+                                                                <input type="text" class="form-control"  name="lastname" placeholder="{{$user -> lastName}}">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Rating</label>
-                                                                    <select name="rating">
-                                                                        <option value="">1</option>
-                                                                        <option value="G">G</option>
-                                                                        <option value="PG">PG</option>
-                                                                        <option value="PG-13">PG-13</option>
-                                                                        <option value="R">R</option>
-                                                                        <option value="NC-17">NC-17</option>
-                                                                    </select>    
-                                                                    </div>
-                                                            <div class="form-group">
-                                                                <label>Movie Synopsis </label>
-                                                                <input type="text" class="form-control"  name="studio" placeholder="">
+                                                                <label>Email</label>
+                                                                <input type="text" class="form-control"  name="email" placeholder="{{$user -> email}}">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Actor</label>
-                                                                <input type="text" class="form-control"  name="studio" placeholder="">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Date</label>
-                                                                <input type="text" class="form-control"  name="studio" placeholder="">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Director</label>
-                                                                <input type="text" class="form-control"  name="studio" placeholder="">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Scriptwriter</label>
-                                                                <input type="text" class="form-control"  name="studio" placeholder="">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Creator</label>
-                                                                <input type="text" class="form-control"  name="studio" placeholder="">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Media type</label>
-                                                                    <select name="type">
-                                                                        <option value="1" ></option>
-                                                                        <option value="movie">Movie</option>
-                                                                        <option value="serie">Serie</option>
-                                                                    </select> 
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Movie Time</label>
-                                                                <input type="text" class="form-control"  name="studio" placeholder="">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Media Image</label>
-                                                                <input type="text" class="form-control"  name="studio" placeholder="">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Media Source</label>
-                                                                <input type="text" class="form-control"  name="studio" placeholder="">
+                                                                <label>Country</label>
+                                                                <input type="text" class="form-control"  name="country" placeholder="{{$user -> country}}">
                                                             </div>
                                                         
                                                         </div>
@@ -299,36 +236,8 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="modal" tabindex="-1" role="dialog" id="myModalDelete">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Delete Media</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                        <h6>Are you sure to delete data? </h6>
-                                                        <form class="form-detail" action="/mediaAd/mediaDelete" method="post" id="myform"> 
-                                                        @csrf
-                                                        <div class="form-group d-none">
-                                                                <label>ID</label>
-                                                                <input type="text" class="form-control"  name="id" value="">
-                                                            </div>
-                                                       
-                                                        
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                        <input type="submit" class="btn btn-danger" value = "Delete">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        </div>
-                                                        </form>
-                                                        </div>
-                                                    </div>
-                                                    </div>
                                         </tr>
-                                        
+                                     @endforeach 
                                     </tbody>
                                 </table>
                                     </div>

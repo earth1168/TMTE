@@ -8,6 +8,8 @@ use Illuminate\Support\Collection;
 use Carbon\Carbon;
 use App\Models\Media;
 use App\Models\licenseDetails;
+use App\Models\User;
+
 
 use Illuminate\Http\Request;
 
@@ -41,8 +43,23 @@ class loginController extends Controller
                 // return view('admin.dashboard')->with(compact('user'));
 
             case "serviceAdmin":
-                return view('serviceAdmin.dashboard');
-
+                $user = User::all();
+                $totalUser = User::where('role', 'user')->count();   
+                $totalSer = User::where('role', 'serviceAdmin')->count(); 
+                $totalMedia = User::where('role', 'mediaAdmin')->count(); 
+                $popular = DB::table('users')->select('country')
+                                    ->groupBy('country')
+                                    ->orderBy(DB::raw('count(country)'), 'desc')
+                                    ->take(1)
+                                    ->first();
+                return view('serviceAdmin.dashboard',[
+                    'users' => $user,
+                    'totalUser' => $totalUser,
+                    'totalSer' => $totalSer,
+                    'totalMedia' => $totalMedia,
+                    'popular' => $popular,
+                ]);
+                    
             case "user":
                 $dateNow = Carbon::now();
                 $profile = DB::table('profiles')->where('userID', '=', $user->id)->pluck('profileName'); 

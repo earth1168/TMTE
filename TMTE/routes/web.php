@@ -67,8 +67,9 @@ Route::get('/dashboard', [loginController::class , 'checkUserType2'])
 ->name('dashboard');
 
 Route::get('/serviceAdmin', [serviceAdminController::class, 'index'])
-->middleware(['auth:sanctum', 'verified'])
+->middleware(['serviceAdminMW'])
 ->name('serviceAdminPage');
+Route::post('/serviceAdmin/userUpdate',[serviceAdminController:: class, 'updateUser'])->middleware('serviceAdminMW');
 
 Route::get('/admin', [adminController::class, 'index'])
 ->middleware(['auth:sanctum', 'verified'])
@@ -79,7 +80,7 @@ Route::post('user/noti/setSeen', [notiLogController::class, 'setSeen']) -> name(
 
 //User role
 Route::middleware(['userMW'])->group(function(){
-    Route::get('/dashboard/profileView', [profileController::class, 'profileView'])->name('profileView');
+    Route::get('/dashboard/profileView', [profileController::class, 'profileView'])->name('profileView');;
     Route::post('/dashboard/createProfile', [profileController::class, 'createProfile'])->name('createProfile');
     Route::post('/dashboard/profileView', [profileController::class, 'dropProfile'])->name('dropProfile');
     Route::get('/dashboard/profileEdit', [profileController::class, 'toEditProfile'])->name('editProfile');
@@ -92,17 +93,13 @@ Route::middleware(['userMW'])->group(function(){
     
 });
 
-Route::middleware(['adminMW']) -> group(function(){
-    Route::post('/admin/addMedia', [adminController::class, 'addMedia']) -> name('adminAddMedia');
-    Route::get('/admin/viewData', [adminController::class, 'viewData']) -> name('adminViewData');
-});
-
  
-Route::get('/mediaAd',[loginController:: class, 'checkUserType2']);
-Route::get('/mediaAd/mediaform',[mediaAdminController:: class, 'media']);
-Route::post('/mediaAd/licenseAdd',[mediaAdminController:: class, 'addLicense']);
-Route::post('/mediaAd/licenseUpdate',[mediaAdminController:: class, 'updateLicense']);
-Route::post('/mediaAd/licenseDelete',[mediaAdminController:: class, 'deleteLicense']);
-Route::post('/mediaAd/mediaform/addMedia',[mediaAdminController:: class, 'addMedia']);
-Route::post('/mediaAd/mediaUpdate',[mediaAdminController:: class, 'updateMedia']);
-Route::post('/mediaAd/mediaDelete',[mediaAdminController:: class, 'deleteMedia']);
+Route::get('/mediaAd',[loginController:: class, 'checkUserType2'])->middleware('adminMW')->name('mediaAd');
+
+Route::get('/mediaAd/mediaform',[mediaAdminController:: class, 'media'])->middleware('adminMW');
+Route::post('/mediaAd/licenseAdd',[mediaAdminController:: class, 'addLicense'])->middleware('adminMW');
+Route::post('/mediaAd/licenseUpdate',[mediaAdminController:: class, 'updateLicense'])->middleware('adminMW');
+Route::post('/mediaAd/licenseDelete',[mediaAdminController:: class, 'deleteLicense'])->middleware('adminMW');
+Route::post('/mediaAd/mediaform/addMedia',[mediaAdminController:: class, 'addMedia'])->middleware('adminMW');
+Route::post('/mediaAd/mediaUpdate',[mediaAdminController:: class, 'updateMedia'])->middleware('adminMW');
+Route::post('/mediaAd/mediaDelete',[mediaAdminController:: class, 'deleteMedia'])->middleware('adminMW');

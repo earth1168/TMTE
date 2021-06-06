@@ -17,20 +17,20 @@ class serviceAdminMW
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()){
+        if(!Auth::check()){
             return redirect() -> route('login');
         }
 
-        if(Auth::user()->role == 'mediaAdmin'){
+        elseif($request->user()->role == 'mediaAdmin'){
             
-            return redirect() -> route('adminPage');
+            return redirect() -> route('mediaAd');
         }
 
-        if(Auth::user()->role == 'serviceAdmin'){
+        elseif($request->user()->role == 'serviceAdmin'){
             return $next($request); 
         }
 
-        if(Auth::user()->role == 'user'){
+        elseif($request->user()->role == 'user'){
             return redirect() -> route('userPage');
         }
     }

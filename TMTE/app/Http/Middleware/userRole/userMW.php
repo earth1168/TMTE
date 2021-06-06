@@ -24,7 +24,7 @@ class userMW
             return $next($request);
         }
         elseif($request->user()->role == 'mediaAdmin') {
-            return redirect() -> route('adminPage');
+            return redirect() -> route('mediaAd');
         }
         elseif($request->user()->role == 'serviceAdmin') {
             return redirect() -> route('serviceAdminPage');
