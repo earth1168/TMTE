@@ -69,6 +69,7 @@
         <script src="./plugins/menu/menu.js"></script>
         <!-- Activation Script -->
         <script src="js/custom.js"></script>
+        
         @livewireScripts
     </body>
 </html>
