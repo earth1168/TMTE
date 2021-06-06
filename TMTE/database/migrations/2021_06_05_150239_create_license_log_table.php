@@ -19,7 +19,7 @@ class CreateLicenseLogTable extends Migration
             $table->unsignedBigInteger('mediaID');
             $table->unsignedBigInteger('licenseID');
             $table->foreign('mediaID')->references('id')->on('media')->onDelete('cascade');
-            $table->foreign('licenseID')->references('id')->on('license_detail')->onDelete('cascade');
+            
         });
     }
 

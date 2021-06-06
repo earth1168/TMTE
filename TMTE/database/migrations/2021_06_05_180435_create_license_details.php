@@ -20,7 +20,14 @@ class CreateLicenseDetails extends Migration
                 $table->foreign('countryID')->references('id')->on('country')->onDelete('cascade');
            
         });
-    }
+
+        Schema::table('license_log', function (Blueprint $table) {
+            $table->foreign('licenseID')
+            ->references('id')
+            ->on('license_details')
+            ->onDelete('cascade');
+        });
+    } 
 
     /**
      * Reverse the migrations.
