@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
 use Carbon\Carbon;
 use App\Models\Media;
+use App\Models\licenseDetails;
 
 use Illuminate\Http\Request;
 
@@ -18,8 +19,23 @@ class loginController extends Controller
             case "mediaAdmin":
                 $media = Media::all();
 
+                $license = DB::table('license_details')
+                            ->join('license_log', function ($join)  {
+                                $join->on('license_details.id', '=', 'license_log.licenseID');
+                            })
+                            ->get();   
+                $totelMedia = Media::all()->count();   
+                $totelMo = Media::where('mediaType', 'movie')->count();     
+                $totelSe = Media::where('mediaType', 'serie')->count();    
+                $totalLi = licenseDetails::all()->count();    
+
                 return view('mediaAdmin.mediaAd',[
-                    'medias' => $media
+                    'medias' => $media,
+                    'licenses' => $license,
+                    'totalMedia' => $totelMedia,
+                    'totalMo' => $totelMo,
+                    'totalSe' => $totelSe,
+                    'totalLi' => $totalLi
                 ]);
                 // return redirect(route("adminPage"));
                 // return view('admin.dashboard')->with(compact('user'));
