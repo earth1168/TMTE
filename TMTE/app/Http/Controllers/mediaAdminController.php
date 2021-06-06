@@ -18,8 +18,23 @@ class mediaAdminController extends Controller
     public function index(){
         $media = Media::all();
 
+        $license = DB::table('license_details')
+                    ->join('license_log', function ($join)  {
+                        $join->on('license_details.id', '=', 'license_log.licenseID');
+                    })
+                    ->get();   
+        $totelMedia = Media::all()->count();   
+        $totelMo = Media::where('mediaType', 'movie')->count();     
+        $totelSe = Media::where('mediaType', 'serie')->count();    
+        $totalLi = licenseDetails::all()->count();    
+
         return view('mediaAdmin.mediaAd',[
-            'medias' => $media
+            'medias' => $media,
+            'licenses' => $license,
+            'totalMedia' => $totelMedia,
+            'totalMo' => $totelMo,
+            'totalSe' => $totelSe,
+            'totalLi' => $totalLi
         ]);
     }
     public function media(){
@@ -180,13 +195,56 @@ class mediaAdminController extends Controller
 
     
     public function addLicense(Request $request){
+        
+        $media = Media::where('mediaName', $request -> title)
+                     ->first();
 
-        $license = new licenseDetails;
-        $license -> expiredDate = $request -> expire;
-        $license -> country = $request -> expire;
+        $dataCountry = $request -> country;
+        $manyCountry = explode(',', $dataCountry);
+        foreach($manyCountry as $singleCountry){
+            $license = new licenseDetails;
+            $license -> expiredDate = $request -> expire;
+            $license -> country = $singleCountry;  
+            $license -> timestamps = false;
+            $license -> save();
+
+            $log = new licenseLog;
+            $log -> licenseID = $license -> id;
+            $log -> mediaID = $media -> id;  
+            $log -> timestamps = false;
+            $log -> save();
+        }
 
 
-        return view('mediaAdmin.licenseForm');
+        return redirect()->back()->with('success');
+    }
+
+    public function updateLicense(Request $request){
+
+            $license = licenseDetails::where('id', $request -> id)
+                     ->first();
+
+            if($request -> expire != NULL){
+            $license -> expiredDate = $request -> expire;
+            }
+            if($request -> country != NULL){
+            $license -> country = $request -> country;
+            }  
+            $license -> timestamps = false;
+            $license -> save();
+            return redirect()->back()->with('success');
+    }
+
+    public function deleteLicense(Request $request){
+        $details = licenseDetails::where('id', $request -> id)
+        ->first();
+
+        $log = licenseLog::where('id', $request -> id)
+        ->first();
+
+        $log -> delete();
+        $details -> delete();
+        return redirect()->back()->with('success');
     }
     
 }

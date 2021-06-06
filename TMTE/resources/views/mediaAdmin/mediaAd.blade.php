@@ -53,11 +53,11 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Number of Movies</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">40,000</div>
+                                                Number of Media</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$totalMedia}}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            <i class="fas fa-photo-video fa-3x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -71,45 +71,35 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            Number of Series</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">215,000</div>
+                                            Number of Movies</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$totalMo}}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                            <i class="fas fa-film fa-3x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Tasks Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card border-left-danger shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            Number of Series</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$totalSe}}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                            <i class="fas fa-tv fa-3x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
 
                         <!-- Pending Requests Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -118,11 +108,11 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                                Number of Licenses</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$totalLi}}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                            <i class="fas fa-scroll fa-3x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -132,35 +122,7 @@
                     <div class ="row">
                     <div class="col-xl-2 col-lg-1">
                     </div>
-                    <div class="col-xl-8 col-lg-6">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
 
 
@@ -399,9 +361,8 @@
                                                                 </button>
                                                             </div>
                                                             @endif
-                                                        <form class="form-detail" action="/mediaAd/mediaUpdate" method="post" id="myform"> 
+                                                        <form class="form-detail" action="/mediaAd/licenseAdd" method="post" id="myform"> 
                                                         @csrf
- 
                                                             <div class="form-group">
                                                                 <label>Media Name</label>
                                                                
@@ -411,7 +372,7 @@
                                                                 <label>Country 
                                                                 <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Please use , to seperate multi value data">
 					                                            <i class="fas fa-info-circle"></i></label>
-                                                                <input type="text" class="form-control"  name="studio" >
+                                                                <input type="text" class="form-control"  name="country" >
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Expired Date</label>
@@ -421,7 +382,7 @@
                                                      </div>
                                                         <div class="modal-footer">
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                        <input type="submit" class="btn btn-primary" value = "Save changes">
+                                                        <input type="submit" class="btn btn-primary" value = "Add license">
                                                         </form>
                                                         </div>
                                                     </div>
@@ -435,36 +396,99 @@
                                 <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Media ID</th>
+                                            <th>Country</th>
+                                            <th>Expiry Date</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Media ID</th>
+                                            <th>Country</th>
+                                            <th>Expiry Date</th>
+                                            <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    @foreach($licenses as $license)
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td>{{$license -> mediaID}}</td>
+                                            <td>{{$license -> country}}</td>
+                                            <td>{{$license -> expiredDate}}</td>
+                                            <td>
+                                            <i class="fas fa-pen-alt" data-toggle="modal" data-target="#myLicense-{{$license -> id}}"></i>
+                                            <i class="fas fa-trash-alt"  data-toggle="modal" data-target="#myLicenseDelete-{{$license -> id}}"></i>
+                                            </td>
                                         </tr>
+                                                         <!-- Modal -->
+                                                 <div class="modal fade" id="myLicense-{{$license -> id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                    <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                        <div class = "modal-title">
+                                                        <h4>Update data</h4>
+                                                        </div>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        <form class="form-detail" action="/mediaAd/licenseUpdate" method="post" id="myform"> 
+                                                        @csrf
+                                                            <div class="form-group d-none">
+                                                                <label>ID</label>
+                                                                <input type="text" class="form-control"  name="id" value="{{$license -> id}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Country</label>
+                                                                <input type="text" class="form-control" id="title"  name="country" placeholder="{{$license -> country}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Expiry Date</label>
+                                                                <input type="text" class="form-control"  name="expire" placeholder="{{$license -> expiredDate}}">
+                                                            </div>
+                                                        
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        <input type="submit" class="btn btn-primary" value = "Save changes">
+                                                        </form>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
 
+                                                <div class="modal" tabindex="-1" role="dialog" id="myLicenseDelete-{{$license -> id}}">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Delete Media</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        <h6>Are you sure to delete data? </h6>
+                                                        <form class="form-detail" action="/mediaAd/licenseDelete" method="post" id="myform"> 
+                                                        @csrf
+                                                        <div class="form-group d-none">
+                                                                <label>ID</label>
+                                                                <input type="text" class="form-control"  name="id" value="{{$license -> id}}">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        <input type="submit" class="btn btn-danger" value = "Delete">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        </div>
+                                                        </form>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                    @endforeach
                                     </tbody>
                                 </table>
+
+
                             </div>
                         </div>
                     </div>

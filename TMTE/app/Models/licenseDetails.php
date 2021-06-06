@@ -11,6 +11,6 @@ class licenseDetails extends Model
     use HasFactory;
     protected $fillable = [
         'expiredDate',
-        'countryID'
+        'country'
     ];
 }
