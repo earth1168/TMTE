@@ -16,8 +16,7 @@ class CreateLicenseDetails extends Migration
         Schema::create('license_details', function (Blueprint $table) {
                 $table->id();
                 $table->date('expiredDate');
-                $table->unsignedBigInteger('countryID');
-                $table->foreign('countryID')->references('id')->on('country')->onDelete('cascade');
+                $table->string('country');
            
         });
 
