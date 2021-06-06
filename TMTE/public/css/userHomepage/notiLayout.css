@@ -1,6 +1,6 @@
 .icon-button {
   position: absolute;
-  right:16%;
+  right:20%;
   top:12.5px;
   display: flex;
   align-items: center;
@@ -63,7 +63,7 @@ ul.dropdown li:hover{
 }
     
     
-ul.dropdown li button {
+.wrapper ul.dropdown li button {
   text-decoration: none;
   padding: .5em 1em;
   display: inline-block;

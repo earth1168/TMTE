@@ -1,6 +1,6 @@
 $(function () {
   // Dropdown 
-  $('.dropdown-toggle').click(function () {
+  $('#NotiDDtoggle').click(function () {
     $(this).next('.dropdown').toggle(400);
   });
 });
@@ -9,7 +9,6 @@ function foo(id) {
   var NotilogID = document.getElementById(id).getAttribute('NotilogID');
   var NotiSeen = document.getElementById(id).getAttribute('NotiSeen');
   var Notides = document.getElementById(id).getAttribute('Notides');
-  console.log(NotilogID, NotiSeen, Notides);
 
   swal(Notides);
 

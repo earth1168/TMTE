@@ -1,6 +1,6 @@
 var mySwiper = new Swiper('.swiper-container', {
     // Optional parameters
-    spaceBetween: 1,
+    spaceBetween: 2,
     slidesPerView: 2,
     loop: false,
     freeMode: true,
@@ -16,7 +16,7 @@ var mySwiper = new Swiper('.swiper-container', {
       640: {
         slidesPerView: 5,
         slidesPerGroup: 2,
-        freeMode: false
+        freeMode: true
       }
     }
     

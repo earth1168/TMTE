@@ -14,17 +14,20 @@ class CreateMediaLogsTable extends Migration
     public function up()
     {
         Schema::create('media_logs', function (Blueprint $table) {
-            $table->unsignedBigInteger('listId');
+            $table->id();
             $table ->Integer('profileID');
-            $table ->Integer('mediaID');
-            $table ->smallInteger('status');
-            $table ->smallInteger('like');
-            $table ->smallInteger('myList');
+            $table ->unsignedBigInteger('mediaID');
+            $table ->smallInteger('status') -> default(0);
+            $table ->smallInteger('like')-> default(0);
+            $table ->smallInteger('myList')-> default(0);
             $table ->string('subtitleSelect');
             $table ->string('soundTrackSelect');
             $table ->time('RemainingTime')->default("00:00:00");
 
             $table->timestamps();
+
+            $table->foreign('profileID')->references('id')->on('profiles') -> onDelete('cascade');
+            $table->foreign('mediaID')->references('id')->on('media') -> onDelete('cascade');
         });
     }
 

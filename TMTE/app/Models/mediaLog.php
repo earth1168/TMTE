@@ -12,9 +12,9 @@ class mediaLog extends Model
     protected $fillable = [
         'profileID',
         'mediaID',
-        'status',
-        'like',
-        'myList',
+        'status',   //0->just click it 1->watch but not done 2->finished
+        'like',     //-1->dislike 1->like 0->neutual
+        'myList',   //0->not in myList 1->added
         'subtitleSelect',
         'soundTrackSelect',
         'RemainingTime'

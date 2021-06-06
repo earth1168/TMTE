@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <title>Create Profile</title>
     <script src="{{ mix('js/app.js') }}" defer></script>
@@ -47,45 +47,53 @@
     <div>
         @livewire('navigation-menu')
     </div><br>
-    <span>profile {{$profile}}</span>
+
     <form class="expanding-search-form">
-                <div class="search-dropdown">
-                    <button class="button dropdown-toggle" type="button">   
-                        <span class="toggle-active">Everything</span>
-                        <span class="ion-arrow-down-b"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li class="menu-active"><a href="#">Everything</a></li>
-                        <li><a href="#">Movie</a></li>
-                        <li><a href="#">Series</a></li>
-                    </ul>
-                </div>
-                <input class="search-input" id="global-search" type="search" placeholder="Search">
-                <label class="search-label" for="global-search">
-                    <span class="sr-only">Global Search</span>
-                </label>
-                <button class="button search-button" type="button">
-                    <span class="icon ion-search">
-                        <span class="sr-only">Search</span>
-                    </span>
-                </button>
-            </form>
+        <div class="search-dropdown">
+            <button class="button dropdown-toggle" type="button" id="search_filter">
+                <span class="toggle-active">Everything</span>
+                <span class="ion-arrow-down-b"></span>
+            </button>
+            <ul class="dropdown-menu" style="z-index: 10;">
+                <li class="menu-active"><a href="#">Everything</a></li>
+                <li><a href="#">Movie</a></li>
+                <li><a href="#">Series</a></li>
+            </ul>
+        </div>
+        <label class="search-label" for="global-search">
+            <span class="sr-only">Global Search</span>
+        </label>
+        <input class="search-input" id="global-search" type="search" placeholder="Search">
+
+
+        <ul class="dropdown" id="searchDD">
+
+
+        </ul>
+
+        <button class="button search-button" type="button">
+            <span class="icon ion-search">
+                <span class="sr-only">Search</span>
+            </span>
+        </button>
+
+    </form>
 
 
     <div class="py-12">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
 
             <div div class="wrapper">
-                <div type="button" class="icon-button dropdown-toggle">
+                <div type="button" class="icon-button dropdown-toggle" id="NotiDDtoggle">
                     <span class="material-icons">notifications</span>
                     <span class="icon-button__badge" id="icon_buttonn"></span>
                 </div>
-                <ul class="dropdown">
-                    
+                <ul class="dropdown" id="notiDD">
+
+
                 </ul>
             </div>
 
-        
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <section class="thumbSection">
                     <h2 class="thumbTitle">Popular Now</h2>
@@ -94,67 +102,20 @@
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
                             <!-- Slides -->
-                            <div class="swiper-slide">
-                                <a class="thumbTile" href="#">
-                                    <img class="thumbTile__image" src="https://i.ytimg.com/vi/E_wWsU3mxRI/maxresdefault.jpg" alt="sample1">
-                                    <div class="overlay">Sample1</div>
-                                </a>
-                            </div>
 
-                            <div class="swiper-slide">
-                                <a class="thumbTile" href="#">
-                                    <img class="thumbTile__image" src="https://image.shutterstock.com/image-vector/online-cinema-art-movie-watching-260nw-586719869.jpg" alt="sample2">
-                                    <div class="overlay">Sample2</div>
-                                </a>
-                            </div>
+                            @foreach($popularMediaMix as $row)
+                            <?php $value = $row->id . ',' . $profile ?>
+                            <form action="user/media" method="post" class="swiper-slide">
+                                @csrf
+                                <button name="pID" type="submit" value="{{$value}}" style="position:relative;" class="thumbTile">
+                                    <img class="thumbTile__image" src="{{$row->mediaImg}}" alt="sample1">
+                                    <div class="overlay">{{ $row->mediaName }}</div>
+                                </button>
+                            </form>
 
-                            <div class="swiper-slide">
-                                <a class="thumbTile" href="#">
-                                    <img class="thumbTile__image" src="https://via.placeholder.com/468x500?text=sample3" alt="sample3">
-                                </a>
-                            </div>
+                            @endforeach
 
-                            <div class="swiper-slide">
-                                <a class="thumbTile" href="#">
-                                    <img class="thumbTile__image" src="https://via.placeholder.com/468x500?text=sample4" alt="sampl4">
-                                </a>
-                            </div>
 
-                            <div class="swiper-slide">
-                                <a class="thumbTile" href="#">
-                                    <img class="thumbTile__image" src="https://via.placeholder.com/468x500?text=sample5" alt="sample5">
-                                </a>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <a class="thumbTile" href="#">
-                                    <img class="thumbTile__image" src="https://via.placeholder.com/468x500?text=sample6" alt="sample6">
-                                </a>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <a class="thumbTile" href="#">
-                                    <img class="thumbTile__image" src="https://via.placeholder.com/468x500?text=sample7" alt="sample7">
-                                </a>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <a class="thumbTile" href="#">
-                                    <img class="thumbTile__image" src="https://via.placeholder.com/468x500?text=sample8" alt="sample8">
-                                </a>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <a class="thumbTile" href="#">
-                                    <img class="thumbTile__image" src="https://via.placeholder.com/468x500?text=sample9" alt="sample9">
-                                </a>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <a class="thumbTile" href="#">
-                                    <img class="thumbTile__image" src="https://via.placeholder.com/468x500?text=sample10" alt="sample10">
-                                </a>
-                            </div>
 
                         </div>
 
@@ -172,9 +133,68 @@
 
         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <h1>asdasd</h1>
+                <section class="thumbSection">
+                    <h2 class="thumbTitle">Action media</h2>
+                    <br>
+                    <div class="thumbTiles swiper-container">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            @foreach($mediaAction as $row)
+                            <?php $value = $row->id . ',' . $profile ?>
+                            <form action="user/media" method="post" class="swiper-slide">
+                                @csrf
+                                <button name="pID" type="submit" value="{{$value}}" style="position:relative;" class="thumbTile">
+                                    <img class="thumbTile__image" src="{{$row->mediaImg}}" alt="sample1">
+                                    <div class="overlay">{{ $row->mediaName }}</div>
+                                </button>
+                            </form>
+                            @endforeach
+                        </div>
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                    <br><br>
+                </section>
             </div>
         </div>
+
+        <br>
+        <br>
+
+        <?php shuffle($allMedia); ?>
+        <div class="max-w-full mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <section class="thumbSection">
+                    <h2 class="thumbTitle">All media</h2>
+                    <br>
+                    <div class="thumbTiles swiper-container">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            @foreach($allMedia as $row)
+                            <?php $value = $row->id . ',' . $profile ?>
+                            <form action="user/media" method="post" class="swiper-slide">
+                                @csrf
+                                <button name="pID" type="submit" value="{{$value}}" style="position:relative;" class="thumbTile">
+                                    <img class="thumbTile__image" src="{{$row->mediaImg}}" alt="sample1">
+                                    <div class="overlay">{{ $row->mediaName }}</div>
+                                </button>
+                            </form>
+                            @endforeach
+                        </div>
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                    <br><br>
+                </section>
+            </div>
+        </div>
+
+
+        <!-- end here -->
     </div>
 
 
@@ -198,22 +218,44 @@
 
     <script type="text/javascript">
         var pID = "<?php echo "$profile" ?>";
+
         setInterval(function() {
             $.ajax({
                 url: "user/noti",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
                 data: {
                     pID: pID
                 },
                 success: function(data) {
                     var allNoti = $(data).find(".text-left").length;
                     var seenNoti = $(data).find(".seennoti").length;
-                    $('#icon_buttonn').text(allNoti-seenNoti);
-                    $('.dropdown').html(data);
+                    $('#icon_buttonn').text(allNoti - seenNoti);
+                    $('#notiDD').html(data);
                 }
             });
+
+
+            var mediaSearchFilter = document.getElementById("search_filter").childNodes[1].textContent;
+            var mediaSearchText = document.getElementById("global-search").value;
+            console.log(mediaSearchFilter, mediaSearchText);
+
+            $.ajax({
+                url: "user/searchMedia",
+                data: {
+                    type: 'POST',
+                    mFilter: mediaSearchFilter,
+                    mText: mediaSearchText,
+                    profileID: pID,
+
+                },
+                success: function(data2) {
+                    // console.log(data2);
+                    $('#searchDD').html(data2);
+                }
+            });
+
         }, 1000);
     </script>
-
 
 </body>
 

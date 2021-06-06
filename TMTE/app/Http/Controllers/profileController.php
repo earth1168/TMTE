@@ -41,7 +41,29 @@ class profileController extends Controller
         $number = $request->profileID[-1];
         $profile = $request->profileID[$number*2-1]; 
         
-        return View::make('user.index')->with(compact('profile'));
+        $kidOrNot = DB::select(DB::raw('SELECT kidUser FROM profiles WHERE profiles.id = :profile'), 
+                                        array('profile' => $profile));
+        // dd($kidOrNot[0]->kidUser);  
+        
+        //find popular media
+        if($kidOrNot == 1){
+            $popularMediaMix = DB::select(DB::raw('SELECT media.id, COUNT(media.id) AS Cmedia, media.mediaName, media.mediaImg FROM media 
+                                            INNER JOIN media_logs ON media.id = media_logs.mediaID WHERE media.kid = 1 
+                                            GROUP BY media.id, media.mediaName, media.mediaImg   
+                                            ORDER BY COUNT(media.id) DESC'));
+        }else
+            $popularMediaMix = DB::select(DB::raw('SELECT media.id, COUNT(media.id) AS Cmedia, media.mediaName, media.mediaImg FROM media 
+                                            INNER JOIN media_logs ON media.id = media_logs.mediaID WHERE media.kid = 0 
+                                            GROUP BY media.id, media.mediaName, media.mediaImg   
+                                            ORDER BY COUNT(media.id) DESC'));
+
+
+        $allMedia = DB::select(DB::raw('SELECT id,media.mediaName, media.mediaImg FROM media'));
+        $mediaAction = DB::select(DB::raw('SELECT media.id, media.mediaName, media.mediaImg FROM media WHERE media.id IN 
+                                            (SELECT category.mediaID FROM category WHERE category.genreID IN 
+                                                (SELECT genre.id FROM genre WHERE genre = "Action")) '));
+            
+        return View::make('user.index')->with(compact('profile','popularMediaMix', 'allMedia', 'mediaAction'));
     }
 
     public function getNoti(Request $request){
@@ -116,22 +138,5 @@ class profileController extends Controller
         return redirect()->back()->with('warningMessage', 'Invalid profile name, You are already has this profile name');
      }
 
-
-    //  public function homeProfile(Request $request){
-    //     $number = $request->profileID[-1];
-    //     $profile = $request->profileID[$number*2-1]; 
-    //     $noti = DB::table('profiles') -> join('notificationlogs', function($join) use($profile){
-    //                                     $join->on('profiles.id', '=', 'notificationlogs.profileID')
-    //                                          ->where('notificationlogs.profileID','=', $profile);
-    //                                     })
-    //                                     -> select('notificationlogs.*')
-    //                                     -> join('notifications', 'notificationlogs.NotiID', '=', 'notifications.id')                           
-    //                                     -> select('notificationlogs.id', 'notificationlogs.NotiID', 'notificationlogs.seen', 'notifications.description')
-                                        
-    //                                     -> get();
-    //     $nNoti = count($noti);
-    //     // dd($noti);
-    //     return View::make('user.index')->with(compact('profile', 'noti', 'nNoti'));
-    // }
-
+     
 }
