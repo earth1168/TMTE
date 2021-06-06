@@ -39,6 +39,78 @@ class DatabaseSeeder extends Seeder
                 'country' => 'UK',
                 'password' => Hash::make('1111'),
                 'role' => 'user'
+            ],
+            [
+                'firstName' => 'TEST',
+                'lastName' => 'test',
+                'email' => 'test@mail.com',
+                'country' => 'UK',
+                'password' => Hash::make('1111'),
+                'role' => 'user'
+            ],
+            [
+                'firstName' => 'user007',
+                'lastName' => 'za',
+                'email' => 'user007@mail.com',
+                'country' => 'UK',
+                'password' => Hash::make('1111'),
+                'role' => 'user'
+            ],
+            [
+                'firstName' => 'user001',
+                'lastName' => 'NOT za',
+                'email' => 'user001@mail.com',
+                'country' => 'UK',
+                'password' => Hash::make('1111'),
+                'role' => 'user'
+            ],
+            [
+                'firstName' => 'another test',
+                'lastName' => 'test',
+                'email' => 'test02@mail.com',
+                'country' => 'Thai',
+                'password' => Hash::make('1111'),
+                'role' => 'user'
+            ],
+            [
+                'firstName' => 'Tiew',
+                'lastName' => 'Tiew',
+                'email' => 'tiew@mail.com',
+                'country' => 'Thai',
+                'password' => Hash::make('1111'),
+                'role' => 'user'
+            ],
+            [
+                'firstName' => 'Min',
+                'lastName' => 'Min',
+                'email' => 'minmin@mail.com',
+                'country' => 'Thai',
+                'password' => Hash::make('1111'),
+                'role' => 'user'
+            ],
+            [
+                'firstName' => 'Thiji',
+                'lastName' => 'Thiji',
+                'email' => 'thiji@mail.com',
+                'country' => 'Thai',
+                'password' => Hash::make('1111'),
+                'role' => 'user'
+            ],
+            [
+                'firstName' => 'Earth',
+                'lastName' => 'Earth',
+                'email' => 'earth@mail.com',
+                'country' => 'Thai',
+                'password' => Hash::make('1111'),
+                'role' => 'user'
+            ],
+            [
+                'firstName' => 'TM',
+                'lastName' => 'TE',
+                'email' => 'tmte@mail.com',
+                'country' => 'Thai',
+                'password' => Hash::make('1111'),
+                'role' => 'user'
             ]
         ]);
 
@@ -95,7 +167,5 @@ class DatabaseSeeder extends Seeder
         //         'NotiID' => $qnoti -> id
         //     ]
         // );
-
-        
     }
 }
