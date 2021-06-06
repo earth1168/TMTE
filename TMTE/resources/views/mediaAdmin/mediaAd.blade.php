@@ -334,7 +334,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                        <h6>Are you sure you want to delete data? </h6>
+                                                        <h6>Are you sure to delete data? </h6>
                                                         <form class="form-detail" action="/mediaAd/mediaDelete" method="post" id="myform"> 
                                                         @csrf
                                                         <div class="form-group d-none">
@@ -375,12 +375,58 @@
                                     <h6 class="m-0 font-weight-bold text-primary">License List</h6>
                                 </div>
                                 <div class = "col-xl-2 col-lg-1">
-                                    <a href="/mediaAd/licenseform" class="btn btn-success btn-icon-split">
+                                    <button class="btn btn-success btn-icon-split">
                                         <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
                                         </span>
-                                        <span class="text">Add License</span>
-                                    </a>
+                                        <span class="text" data-toggle="modal" data-target="#myModalLicense" >Add License</span>
+                                    </button>
+                                    <div class="modal fade" id="myModalLicense" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                    <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                        <div class = "modal-title">
+                                                        <h4>Add license</h4>
+                                                        </div>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @if(session("success"))
+                                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                                <strong>Success!</strong> You can go back to home page.
+                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            @endif
+                                                        <form class="form-detail" action="/mediaAd/mediaUpdate" method="post" id="myform"> 
+                                                        @csrf
+ 
+                                                            <div class="form-group">
+                                                                <label>Media Name</label>
+                                                               
+                                                                <input type="text" class="form-control" id="title"  name="title">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Country 
+                                                                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Please use , to seperate multi value data">
+					                                            <i class="fas fa-info-circle"></i></label>
+                                                                <input type="text" class="form-control"  name="studio" >
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Expired Date</label>
+                                                                <input class="input-text" name="expire" type="date" id="example-date-input">
+                                                            </div>
+
+                                                     </div>
+                                                        <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        <input type="submit" class="btn btn-primary" value = "Save changes">
+                                                        </form>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
                                     </div>
                             </div>
                         </div>
@@ -431,6 +477,8 @@
                 <!-- /.container-fluid -->
 
             </div>
+
+            
             <!-- End of Main Content -->
 
             <!-- Footer -->
@@ -454,11 +502,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Bootstrap core JavaScript-->
 
-    
-    <script src="{{asset('./css/mediaAd/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('./css/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="{{asset('./css/mediaAd/jquery-easing/jquery.easing.min.js')}}"></script>
@@ -474,16 +518,37 @@
     <script src="{{asset('./css/mediaAd/js/demo/datatables-demo.js')}}"></script>
 
         <script>
-            $('#myModel').on('show', function(e) {
-                var link     = e.relatedTarget(),
-                    modal    = $(this),
-                    name = link.data("name"),
-                    studio    = link.data("studio");
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 
-                modal.find("#name").val(name);
-                modal.find("#studio").val(studio);
-            });
-            })
+        </script>
+        <script>
+        
+$(function()
+{
+    $(document).on('click', '.btn-add', function(e)
+    {
+        e.preventDefault();
+
+        var controlForm = $('.controls form:first'),
+            currentEntry = $(this).parents('.entry:first'),
+            newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+        newEntry.find('input').val('');
+        controlForm.find('.entry:not(:last) .btn-add')
+            .removeClass('btn-add').addClass('btn-remove')
+            .removeClass('btn-success').addClass('btn-danger')
+            .html('<span class="glyphicon glyphicon-minus"></span>');
+    }).on('click', '.btn-remove', function(e)
+    {
+		$(this).parents('.entry:first').remove();
+
+		e.preventDefault();
+		return false;
+	});
+});
+
         </script>
     
 </body>

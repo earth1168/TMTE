@@ -10,6 +10,8 @@ use App\Models\soundtrack;
 use App\Models\genre;
 use App\Models\caution;
 use App\Models\category;
+use App\Models\licenseDetails;
+use App\Models\licenseLog;
 
 class mediaAdminController extends Controller
 {
@@ -177,7 +179,13 @@ class mediaAdminController extends Controller
 
 
     
-    public function license(){
+    public function addLicense(Request $request){
+
+        $license = new licenseDetails;
+        $license -> expiredDate = $request -> expire;
+        $license -> country = $request -> expire;
+
+
         return view('mediaAdmin.licenseForm');
     }
     
