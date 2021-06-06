@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
 use Carbon\Carbon;
+use App\Models\Media;
 
 use Illuminate\Http\Request;
 
@@ -15,8 +16,13 @@ class loginController extends Controller
         $user = Auth::user();
         switch(Auth::user()->role){
             case "mediaAdmin":
+                $media = Media::all();
+
+                return view('mediaAdmin.mediaAd',[
+                    'medias' => $media
+                ]);
                 // return redirect(route("adminPage"));
-                return view('admin.dashboard')->with(compact('user'));
+                // return view('admin.dashboard')->with(compact('user'));
 
             case "serviceAdmin":
                 return view('serviceAdmin.dashboard');
