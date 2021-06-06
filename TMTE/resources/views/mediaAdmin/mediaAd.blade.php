@@ -182,8 +182,8 @@
                                             <td>{{$media -> director}}</td>
                                             <td>{{$media -> mediaTime}}</td>
                                             <td>
-                                            <i class="fas fa-pen-alt" data-toggle="modal" data-target="#myModal-{{$media -> id}}"></i>
-                                            <i class="fas fa-trash-alt"  data-toggle="modal" data-target="#myModalDelete-{{$media -> id}}"></i>
+                                            <i class="fas fa-pen-alt" data-toggle="modal" style="color:#2271dd" data-target="#myModal-{{$media -> id}}"></i>
+                                            <i class="fas fa-trash-alt"  data-toggle="modal" style="color:red" data-target="#myModalDelete-{{$media -> id}}"></i>
                                             </td>
                                             
                                               <!-- Modal -->
@@ -417,8 +417,8 @@
                                             <td>{{$license -> country}}</td>
                                             <td>{{$license -> expiredDate}}</td>
                                             <td>
-                                            <i class="fas fa-pen-alt" data-toggle="modal" data-target="#myLicense-{{$license -> id}}"></i>
-                                            <i class="fas fa-trash-alt"  data-toggle="modal" data-target="#myLicenseDelete-{{$license -> id}}"></i>
+                                            <i class="fas fa-pen-alt" data-toggle="modal" style="color:#2271dd" data-target="#myLicense-{{$license -> id}}"></i>
+                                            <i class="fas fa-trash-alt"  data-toggle="modal"  style="color:red"data-target="#myLicenseDelete-{{$license -> id}}"></i>
                                             </td>
                                         </tr>
                                                          <!-- Modal -->
