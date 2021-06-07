@@ -48,35 +48,45 @@ class profileController extends Controller
             DB::raw('SELECT kidUser FROM profiles WHERE profiles.id = :profile'),
             array('profile' => $profile)
         );
+
+        
         // dd($kidOrNot[0]->kidUser);  
 
         //find popular media
-        if ($kidOrNot == 1) {
+        if ($kidOrNot[0]->kidUser == 1) {
             $popularMediaMix = DB::select(DB::raw('SELECT media.id, COUNT(media.id) AS Cmedia, media.mediaName, media.mediaImg FROM media 
                                             INNER JOIN media_logs ON media.id = media_logs.mediaID WHERE media.kid = 1 
                                             GROUP BY media.id, media.mediaName, media.mediaImg   
                                             ORDER BY COUNT(media.id) DESC'));
         } else
             $popularMediaMix = DB::select(DB::raw('SELECT media.id, COUNT(media.id) AS Cmedia, media.mediaName, media.mediaImg FROM media 
-                                            INNER JOIN media_logs ON media.id = media_logs.mediaID WHERE media.kid = 0 
+                                            INNER JOIN media_logs ON media.id = media_logs.mediaID 
                                             GROUP BY media.id, media.mediaName, media.mediaImg   
                                             ORDER BY COUNT(media.id) DESC'));
 
 
-        if ($kidOrNot == 1) {
+        if ($kidOrNot[0]->kidUser == 1) {
             $allMedia = DB::select(DB::raw('SELECT id,media.mediaName, media.mediaImg FROM media WHERE kid = 1'));
         } else
             $allMedia = DB::select(DB::raw('SELECT id,media.mediaName, media.mediaImg FROM media'));
 
-            
-        $mediaAction = DB::select(DB::raw('SELECT media.id, media.mediaName, media.mediaImg FROM media WHERE media.id IN 
+
+        if ($kidOrNot[0]->kidUser == 1) {
+            $mediaAction = DB::select(DB::raw('SELECT media.id, media.mediaName, media.mediaImg FROM media WHERE media.kid = 1 AND media.id IN 
                                             (SELECT category.mediaID FROM category WHERE category.genreID IN 
-                                                (SELECT genre.id FROM genre WHERE genre = "Action")) '));
+                                            (SELECT genre.id FROM genre WHERE genre = "Action")) '));
+        } else
+            $mediaAction = DB::select(DB::raw('SELECT media.id, media.mediaName, media.mediaImg FROM media WHERE media.id IN 
+                                            (SELECT category.mediaID FROM category WHERE category.genreID IN 
+                                            (SELECT genre.id FROM genre WHERE genre = "Action")) '));
 
 
-        $mylist = DB::select(DB::raw('SELECT media.id, media.mediaName, media.mediaImg FROM media_logs INNER JOIN media ON 
-                                media_logs.mediaID = media.id WHERE media_logs.profileID = :profile AND media_logs.myList = 1'), 
-                                array('profile' => $profile));
+
+        $mylist = DB::select(
+            DB::raw('SELECT media.id, media.mediaName, media.mediaImg FROM media_logs INNER JOIN media ON 
+                                media_logs.mediaID = media.id WHERE media_logs.profileID = :profile AND media_logs.myList = 1'),
+            array('profile' => $profile)
+        );
 
         return View::make('user.index')->with(compact('profile', 'popularMediaMix', 'allMedia', 'mediaAction', 'mylist'));
     }
