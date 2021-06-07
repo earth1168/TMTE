@@ -3,6 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
+
+use function GuzzleHttp\default_ca_bundle;
 
 class CreateMediaLogsTable extends Migration
 {
@@ -20,8 +23,8 @@ class CreateMediaLogsTable extends Migration
             $table ->smallInteger('status') -> default(0);
             $table ->smallInteger('like')-> default(0);
             $table ->smallInteger('myList')-> default(0);
-            $table ->string('subtitleSelect');
-            $table ->string('soundTrackSelect');
+            $table ->string('subtitleSelect') -> Nullable();
+            $table ->string('soundTrackSelect')-> Nullable();
             $table ->time('RemainingTime')->default("00:00:00");
 
             $table->timestamps();

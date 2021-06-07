@@ -11,6 +11,7 @@ use App\Http\Controllers\paymentcontroller;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\mediaController;
 use App\Http\Controllers\serviceAdminController;
+use App\Http\Controllers\mediaLogController;
 use App\Http\Controllers\userController;
 
 use App\Http\Controllers\mediaAdminController;
@@ -76,7 +77,7 @@ Route::get('/admin', [adminController::class, 'index'])
 ->name('adminPage');
 
 
-Route::post('user/noti/setSeen', [notiLogController::class, 'setSeen']) -> name('setSeenNoti');
+
 
 //User role
 Route::middleware(['userMW'])->group(function(){
@@ -89,7 +90,9 @@ Route::middleware(['userMW'])->group(function(){
     Route::get('user/noti', [profileController::class, 'getNoti']) -> name('userNoti');
     Route::post('user/media', [mediaController::class, 'mediaPage']) -> name('mediaPage');
     Route::get('user/searchMedia', [mediaController::class, 'searchMedia']) -> name('searchMedia');
-
+    Route::post('user/noti/setSeen', [notiLogController::class, 'setSeen']) -> name('setSeenNoti');
+    Route::get('user/media/getStatus', [mediaLogController::class, 'getStatus']) -> name('getStatus');
+    Route::post('user/media/setStatus', [mediaLogController::class, 'setStatus']) -> name('setStatus');
     
 });
 

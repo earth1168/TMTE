@@ -94,6 +94,45 @@
                 </ul>
             </div>
 
+
+
+            @if(count($mylist) > 0)
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <section class="thumbSection">
+                    <h2 class="thumbTitle">My list</h2>
+                    <br>
+                    <div class="thumbTiles swiper-container">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+
+                            @foreach($mylist as $row)
+                            <?php $value = $row->id . ',' . $profile ?>
+                            <form action="user/media" method="post" class="swiper-slide">
+                                @csrf
+                                <button name="pID" type="submit" value="{{$value}}" style="position:relative;" class="thumbTile">
+                                    <img class="thumbTile__image" src="{{$row->mediaImg}}" alt="sample1">
+                                    <div class="overlay">{{ $row->mediaName }}</div>
+                                </button>
+                            </form>
+
+                            @endforeach
+
+
+
+                        </div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                    <br><br>
+                </section>
+            </div>
+            @endif
+
+            <br><br>
+
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <section class="thumbSection">
                     <h2 class="thumbTitle">Popular Now</h2>
@@ -222,7 +261,9 @@
         setInterval(function() {
             $.ajax({
                 url: "user/noti",
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+                },
                 data: {
                     pID: pID
                 },
@@ -242,7 +283,7 @@
             $.ajax({
                 url: "user/searchMedia",
                 data: {
-                    type: 'POST',
+
                     mFilter: mediaSearchFilter,
                     mText: mediaSearchText,
                     profileID: pID,
@@ -254,7 +295,7 @@
                 }
             });
 
-        }, 1000);
+        }, 10000);
     </script>
 
 </body>

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Media name</title>
     <script src="{{ mix('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -24,6 +25,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Plugin'stylesheets  -->
     <link rel="stylesheet" href="{{asset('./plugins/aos/aos.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
     <!-- Vendor stylesheets  -->
     <link rel="stylesheet" href="{{asset('./css/main.css')}}">
     <link rel="stylesheet" href="{{asset('./css/userHomepage/media.css')}}">
@@ -41,16 +44,8 @@
 
                 <div class="mt-10" style="text-align: center; font-size: 180%; ">{{$mediaData[0]->mediaName}}</div>
 
-                <div class="wrapper-icon">
-                    <button>
-                        <i class="far fa-thumbs-up fa-2x" style="margin: 10px;"></i>
-                    </button>
-                    <button>
-                        <i class="far fa-thumbs-down fa-2x" style="margin: 10px;"></i>
-                    </button>
-                    <button>
-                        <i class="far fa-address-book fa-2x" style="margin: 10px;"></i>
-                    </button>
+                <div class="wrapperIcon">
+                    
 
                 </div>
 
@@ -61,12 +56,21 @@
                 </div>
 
                 <br>
-
-                <div class="ml-20">
-                    <label for="subtitles" style="font-size: 1.4em;">Choose a subtitles:</label>
+                
+                <div class="ml-20"style="display: inline-block;>
+                    <label for="subtitles" style="font-size: 1.1em;">Choose a subtitles:</label>
                     <select id="subtitles"style="font-size: 1.1em;">
-                        @foreach()
+                        @foreach($subtitles as $row)
+                            <option value="{{$row->subtitle}}">{{$row->subtitle}}</option>
+                        @endforeach
+                    </select>
+                </div>
 
+                <div class="ml-20" style="display: inline-block;">
+                    <label for="soundtracks" style="font-size: 1.1em;">Choose a soundtracks:</label>
+                    <select id="soundtracks"style="font-size: 1.1em;">
+                        @foreach($soundtracks as $row)
+                            <option value="{{$row->soundtrack}}">{{$row->soundtrack}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -100,6 +104,20 @@
                          overflow: hidden;" class='ml-6 bg-purple-600 bg-opacity-25 mr-6 mb-6'>{{$mediaData[0]->actor}}</div>
                 </div>
 
+                <?php $genreN = '';$genredes = '';?>
+
+                @foreach($genre as $row)
+                    <?php $genreN.=$row->genre ?>
+                    <?php $genredes.=$row->genreDescription ?>
+                @endforeach
+
+                <div style="text-align: left; font-size: 180%; display:inline-block" class='ml-3'>
+                    <div style="text-align: left; font-size: 80%; width: 600px;
+                            overflow: hidden;" class='ml-6 bg-opacity-25 mr-6 mb-6'>Genre: {{$genreN}}<br>
+                        Genre description: {{$genredes}}
+                    </div>
+                </div>
+
 
 
 
@@ -112,6 +130,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/d6aebf2809.js" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
     <!-- Vendor Scripts -->
     <script src="js/vendor.min.js"></script>
@@ -119,6 +138,25 @@
     <script src="./plugins/menu/menu.js"></script>
     <!-- Activation Script -->
     <script src="js/custom.js"></script>
+    <script type="text/javascript" src="{{ asset('js/userHomepage/iconMedia.js') }}"></script>
+
+    <script type="text/javascript">
+        var mediaLogID = "<?php echo "$mediaLogID" ?>";
+        setInterval(function() {
+            $.ajax({headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
+                method: 'get',
+                url: "media/getStatus",
+                data: {
+                    mediaLogID:mediaLogID
+                },
+                success: function(data3) {
+                    
+                    $('.wrapperIcon').html(data3);
+                }
+            });
+
+        }, 500);
+    </script>
 </body>
 
 </html>

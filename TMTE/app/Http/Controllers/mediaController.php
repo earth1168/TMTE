@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
 use App\Models\mediaLog;
+use App\Models\subtitle;
 use PDO;
 
 // $manyDes = explode(',', $dataDes );
@@ -27,14 +28,40 @@ class mediaController extends Controller
             $data = array();
             $data['profileID'] = $pID;
             $data['mediaID'] = $mediaID;
-            $data['status'] = 0;
-            $data['like'] = 0;
+            $data['subtitleSelect'] = 'English';
+            $data['soundTrackSelect'] = 'English';
+            
+            DB::table('media_logs') -> insert($data);
         }
 
-        $subtitles = DB::select(DB::raw('SELECT subtitle.subtitle FROM subtitle WHERE subtitle.mediaID = :mediaID'), 
-        array('mediaID' => $mediaID));
- 
-        return View::make('user.mediaPage')->with(compact('mediaData', 'subtitles'));
+        $subtitles = DB::table('media')
+        ->join('subtitle', function ($join)use($mediaID) {
+            $join->on('media.id', '=', 'subtitle.mediaID')
+                 ->where('media.id', '=', $mediaID);
+        })
+        ->select('subtitle.subtitle')
+        ->get();
+        
+        $soundtracks = DB::table('media')
+        ->join('soundtrack', function ($join)use($mediaID) {
+            $join->on('media.id', '=', 'soundtrack.mediaID')
+                 ->where('media.id', '=', $mediaID);
+        })
+        ->select('soundtrack.soundtrack')
+        ->get();
+
+        $genre = DB::table('media') -> select('media.id') -> join('category', 'media.id', '=', 'category.mediaID')
+                                                          -> join('genre', 'category.genreID', '=', 'genre.id')
+                                                          -> where('media.id' ,'=', $mediaID) -> select('genre.genre','genre.genreDescription')
+                                                          ->get();
+
+       
+        $mediaLogID = DB::select(DB::raw('SELECT id FROM media_logs WHERE media_logs.mediaID = :mediaID AND media_logs.profileID = :pID'), 
+        array('mediaID' => $mediaID, 'pID' => $pID));
+
+        $mediaLogID = $mediaLogID[0]->id;
+
+        return View::make('user.mediaPage')->with(compact('mediaData', 'subtitles','soundtracks','genre', 'mediaLogID'));
     }
 
     public function searchMedia(Request $request){
@@ -56,13 +83,19 @@ class mediaController extends Controller
                                                 ]) -> get();
         }
 
-        $res = '';
+        $res = NULL;
         
         foreach($data as $row){
             $value = $row->id . ',' . $profile;
-            $res.= '<li><form action="user/media" method="post"> 
-            <button name="pID" type="submit" value="' . $value  . '" class="buttonSearchDD">
-            <img src="'. $row->mediaImg . '" class="searchGetImg"><span class="searchGetText">' . $row->mediaName . '</span></button></form></li>';
+            $res.= '<li>
+                        <form action="user/media" method="post"> 
+                            <button name="pID" type="submit" value="' . $value  . '" class="buttonSearchDD">
+                                <img src="'. $row->mediaImg . '" class="searchGetImg">
+                                <span class="searchGetText">' . $row->mediaName . '
+                                </span>
+                            </button>
+                        </form>
+                    </li>';
         }
         echo $res;
     }
