@@ -1,0 +1,185 @@
+INSERT INTO `genre` (`id`, `genre`, `genreDescription`) VALUES
+(1, 'Action', 'Action & adventure'),
+(2, 'Action', 'Action sf & fantasy'),
+(3, 'Action', 'Crime action & adventure'),
+(4, 'Action', 'Action & adventure'),
+(5, 'Action', 'Horror'),
+(6, 'Romantic', 'Romantic Comedies'),
+(7, 'Sports', 'Baseball movies'),
+(8, 'Anime', 'Anime action'),
+(9, 'Dramas', 'Dramas based on books'),
+(10, 'TV Show', 'Food & travel');
+
+INSERT INTO `media` (`id`, `mediaName`, `studioName`, `rating`, `kid`, `plot`, `actor`, `date`, `director`, `scriptwriter`, `creator`, `mediaType`, `mediaTime`, `mediaImg`, `mediaSource`) VALUES
+(1, 'Shadow and Bone', '21 Laps Entertainment', 'R', '0', 'Dark forces conspire against orphan mapmaker Alina Starkov when she unleashes an extraordinary power that could change the fate of her war-torn world', 'Jessie Mei Li, Ben Barnes, Archie Renaux', '2021-04-23', 'Mairzee Almas', 'Mairzee Almas', 'Eric Heisserer', 'serie', '00:00:52', 'https://vanderbilthustler.com/wp-content/uploads/2021/05/Screen-Shot-2021-05-03-at-8.09.10-PM-900x457.png', 'https://www.youtube.com/embed/b1WHQTbJ7vE'),
+(2, 'Mortal Kombat', 'New Line Cinema', 'NC-17', '0', 'MMA fighter Cole Young seeks out Earth\'s greatest champions in order to stand against the enemies of Outworld in a high stakes battle for the universe.', 'Lewis Tan,Jessica McNamee,Josh Lawson', '2021-04-16', 'Simon McQuoid', 'Greg Russo', '0', 'movie', '00:01:10', 'https://oyster.ignimgs.com/wordpress/stg.ign.com/2021/02/mortal-kombat-movie-poster.png', 'https://www.youtube.com/embed/VwU3SlQ723Q'),
+(3, 'Nobody', '87North', 'NC-17', '0', 'A bystander who intervenes to help a woman being harassed by a group of men becomes the target of a vengeful drug lord.', 'Bob Odenkirk,Aleksey Serebryakov,Connie Nielsen', '2021-03-26', 'Ilya Naishuller', 'Derek Kolstad', '0', 'movie', '00:01:32', 'https://movies.universalpictures.com/media/03-nbd-dm-mainstage-mobile-banner-1080x793-ra-f022221-60354670e5a33-1.jpg', 'https://www.youtube.com/embed/wZti8QKBWPo'),
+(4, 'Tenet', 'Warner Bros.', 'NC-17', '0', 'Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.', 'Juhan Ulfsak,Jefferson Hall,Ivo Uukkivi', '2021-04-14', 'Christopher Nolan', 'Christopher Nolan', '0', 'movie', '00:02:30', 'https://lh3.googleusercontent.com/proxy/nU_0UFhGHsMAwoSkz6f58SAOAe6Ao6G_bN4DSrWzNnX7o8yP9OQJn7SvJA3oYbKZMhlKzXsgfllA9Lhit2L-8fGxkyfEzOtF-8ZAEhOikAXDN959-4uVHo0GTYJ5WPfxK7grxwZJR3Pf51I', 'https://www.youtube.com/embed/L3pk_TBkihU'),
+(5, 'As Above, So Below', 'Legendary Entertainment', 'NC-17', '0', 'When a team of explorers ventures into the catacombs that lie beneath the streets of Paris, they uncover the dark secret that lies within this city of the dead.', 'Perdita Weeks,Ben Feldman,Edwin Hodge', '2014-08-19', 'John Erick Dowdle', 'John Erick Dowdle', '0', 'movie', '00:01:13', 'https://crypticrock.com/wp-content/uploads/2014/11/m_AsAboveSoBelow.jpg', 'https://www.youtube.com/embed/Fq358xHbzN4'),
+(6, 'Holidate', 'Netflix', 'PG-13', '0', 'Fed up with being single on holidays, two strangers agree to be each other\'s platonic plus-ones all year long, only to catch real feelings along the way.', 'Emma Roberts,Luke Bracey,Kristin Chenoweth', '2021-04-27', 'John Whitesell', 'Tiffany Paulsen', '0', 'movie', '00:01:44', 'https://occ-0-444-448.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABURixsSus9MJO6NKpEeEyP07Gk_gRGQOlT2GMoJfkgEfiNtsFDWBJnsXw9iBg9k0uQtuTD8CK-Kpf2Y0j2P1MOL2g4aW8UQGdIiRRBqdvdY6hNdLX0_o31foU5z3BA.jpg', 'https://www.youtube.com/embed/hxaaAoI57fk'),
+(7, 'Moneyball', 'Columbia Pictures', 'PG', '0', 'Oakland A\'s general manager Billy Beane\'s successful attempt to assemble a baseball team on a lean budget by employing computer-generated analysis to acquire new players.', 'Brad Pitt,Robin Wright', '2021-02-17', 'Bennett Miller', 'Steven Zaillian', '0', 'movie', '00:02:13', 'https://i1.wp.com/www.patsonic.com/images/2012/01/moneyball.jpg', 'https://www.youtube.com/embed/-4QPVo0UIzc'),
+(8, 'Dota: Dragon\'s Blood', 'Netflix Animation', 'G', '1', 'After encounters with a dragon and a princess on her own mission, a Dragon Knight becomes embroiled in events larger than he could have ever imagined.', 'Yuri Lowenthal,Lara Pulver', '2021-03-25', 'Yu-Won Pang', 'Ashley Miller', '0', 'serie', '00:00:30', 'https://thethaiger.com/th/wp-content/uploads/sites/9/2021/02/EuYxyBlUYAAu0TH.jpg', 'https://www.youtube.com/embed/F0evM-hBlcI'),
+(9, 'The Blind Side', 'Alcon Entertainment', 'PG-13', '0', 'The story of Michael Oher, a homeless and traumatized boy who became an All-American football player and first-round NFL draft pick with the help of a caring woman and her family.', 'Sandra Bullock,Tim McGraw', '2021-01-15', 'John Lee Hancock', 'John Lee Hancock', '0', 'movie', '00:02:09', 'https://material.asset.catchplay.com/WAR-TW-001-A0201/artworks/posters/WAR-TW-001-A0201-P544.jpg', 'https://www.youtube.com/embed/gvqj_Tk_kuM'),
+(10, 'Flavorful Origins', 'Netflix', 'G', '1', 'Embark on a delightful journey through the culinary traditions of China and uncover the stories of the people who create and cherish its dishes.', 'Yang Chen,Hao Chen,Vivian Lu', '2019-02-05', 'Hu Zhitang', 'Hu Zhitang', '0', 'serie', '00:00:45', 'https://occ-0-1722-92.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABTn5AOAquzmN4CbYJLDeC4GJgEIErtA9qCmEMkxtGtFs2HBiA1t9d1nNiZcqgmVUAdOEnrFnFRawPVew5QCO0dAEVE3E4xzIn8CQak_IiffOq6_LZprpmrNiACCdOA.jpg', 'https://www.youtube.com/embed/0284nI6vAnQ');
+
+INSERT INTO `subtitle` (`id`, `mediaID`, `subtitle`) VALUES
+(1, 1, 'Thai'),
+(2, 1, 'English'),
+(3, 2, 'Thai'),
+(4, 2, 'English'),
+(5, 3, 'Thai'),
+(6, 3, 'English'),
+(7, 4, 'Thai'),
+(8, 4, 'English'),
+(9, 5, 'Thai'),
+(10, 5, 'English'),
+(11, 6, 'Thai'),
+(12, 6, 'English'),
+(13, 7, 'Thai'),
+(14, 7, 'English'),
+(15, 8, 'Thai'),
+(16, 8, 'English'),
+(17, 9, 'Thai'),
+(18, 9, 'English'),
+(19, 10, 'Thai'),
+(20, 10, 'English'),
+(21, 10, 'China');
+
+INSERT INTO `category` (`id`, `mediaID`, `genreID`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3),
+(4, 4, 4),
+(5, 5, 5),
+(6, 6, 6),
+(7, 7, 7),
+(8, 8, 8),
+(9, 9, 9),
+(10, 10, 10);
+
+INSERT INTO `soundtrack` (`id`, `mediaID`, `soundtrack`) VALUES
+(1, 1, 'English'),
+(2, 2, 'English'),
+(3, 3, 'English'),
+(4, 4, 'English'),
+(5, 5, 'English'),
+(6, 6, 'English'),
+(7, 7, 'English'),
+(8, 8, 'English'),
+(9, 9, 'English'),
+(10, 10, 'English');
+
+INSERT INTO `caution` (`id`, `mediaID`, `caution`) VALUES
+(1, 1, '0'),
+(2, 2, 'violence'),
+(3, 3, 'violence'),
+(4, 4, 'violence'),
+(5, 5, 'Violence'),
+(6, 6, '0'),
+(7, 7, '0'),
+(8, 8, '0'),
+(9, 9, '0'),
+(10, 10, '0');
+
+INSERT INTO `caution` (`id`, `mediaID`, `caution`) VALUES
+(11, 1, 'Scary'),
+(12, 2, '0'),
+(13, 3, '0'),
+(14, 4, 'Bloody'),
+(15, 5, '0'),
+(16, 6, '0'),
+(17, 7, '0'),
+(18, 8, '0'),
+(19, 9, '0'),
+(20, 10, '0');
+
+INSERT INTO `media` (`id`, `mediaName`, `studioName`, `rating`, `kid`, `plot`, `actor`, `date`, `director`, `scriptwriter`, `creator`, `mediaType`, `mediaTime`, `mediaImg`, `mediaSource`) VALUES
+(11, 'Parasite', 'CJ Entertainment', 'R', '0', 'Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.', 'Song Kang-ho, Lee Sun-kyun, Cho Yeo-jeong, Choi Woo-shik, Park So-dam, Lee Jung-eun, Jang Hye-jin', '2019-11-01', 'Bong Joon-ho', 'Bong Joon-ho', 'Bong Joon-ho', 'movie', '00:01:55', 'https://www.matichon.co.th/wp-content/uploads/2020/02/parasite-2.jpg', 'https://www.youtube.com/embed/Y2XkgNlmTMQ'),
+(12, 'THE IRISHMAN', 'Tribeca Productions', 'R', '0', 'In the 1950s, truck driver Frank Sheeran gets involved with Russell Bufalino and his Pennsylvania crime family. As Sheeran climbs the ranks to become a top hit man, he also goes to work for Jimmy Hoffa -- a powerful Teamster tied to organized crime.', 'Robert De Niro, Al Pacino, Joe Pesci, Ray Romano, Bobby Cannavale, Anna Paquin, Stephen Graham, Harvey Keitel', '2019-11-01', 'Martin Scorsese', 'Steven Zaillian', 'Martin Scorsese', 'movie', '00:02:09', 'https://i.ytimg.com/vi/WHXxVmeGQUc/maxresdefault.jpg', 'https://www.youtube.com/embed/WHXxVmeGQUc'),
+(13, 'KNIVES OUT', 'FilmNation Entertainment', 'PG-13', '0', 'The circumstances surrounding the death of crime novelist Harlan Thrombey are mysterious, but there\'s one thing that renowned Detective Benoit Blanc knows for sure -- everyone in the wildly dysfunctional Thrombey family is a suspect.', 'Daniel Craig, Chris Evans, Ana de Armas, Jamie Lee Curtis', '2019-11-27', 'Rian Johnson', 'Rian Johnson', 'Rian Johnson', 'movie', '00:01:20', 'https://i.ytimg.com/vi/pQwkUn-Q_1k/maxresdefault.jpg', 'https://www.youtube.com/embed/3jS99mwEJYM'),
+(14, '1917', 'Neal Street Productions', 'R', '0', 'During World War I, two British soldiers -- Lance Cpl. Schofield and Lance Cpl. Blake -- receive seemingly impossible orders.', 'George MacKay, Dean-Charles Chapman, Mark Strong', '2020-01-20', 'Sam Mendes', 'Sam Mendes', 'Sam Mendes', 'movie', '00:01:19', 'https://www.silpa-mag.com/wp-content/uploads/2020/01/%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%9B%E0%B8%81-1917.jpg', 'https://www.youtube.com/embed/gZjQROMAh_s'),
+(15, 'US', 'Monkeypaw Productions', 'R', '0', 'Accompanied by her husband, son and daughter, Adelaide Wilson returns to the beachfront home where she grew up as a child.', 'Lupita Nyong\'o, Winston Duke, Elisabeth Moss, Tim Heidecker', '2019-03-22', 'Jordan Peele', 'Jordan Peele', '0', 'movie', '00:01:16', 'https://static01.nyt.com/images/2019/03/26/arts/26us-theories/26us-theories-superJumbo-v2.jpg', 'https://www.youtube.com/embed/hNCmb-4oXJA'),
+(16, 'SPIDER-MAN: INTO THE SPIDER-VERSE', 'Sony Pictures Animation', 'PG', '0', 'Bitten by a radioactive spider in the subway, Brooklyn teenager Miles Morales suddenly develops mysterious powers that transform him into the one and only Spider-Man.', 'Shameik Moore, Jake Johnson, Hailee Steinfeld', '2018-12-14', 'Bob Persichetti', 'Bob Persichetti', 'Bob Persichetti', 'movie', '00:01:17', 'https://cdn.majorcineplex.com/uploads/content/images/20210420122556_into%20spiderverse2.jpg', 'https://www.youtube.com/embed/g4Hbz2jLxvQ'),
+(17, 'THE INVISIBLE MAN', 'Dark Universe', 'R', '0', 'After staging his own suicide, a crazed scientist uses his power to become invisible to stalk and terrorize his ex-girlfriend. When the police refuse to believe her story, she decides to take matters into her own hands and fight back.', 'Elisabeth Moss, Oliver Jackson-Cohen, Aldis Hodge', '2020-02-28', 'Leigh Whannell', 'Leigh Whannell', 'Leigh Whannell', 'movie', '00:01:24', 'https://www.naewna.com/uploads/news/source/477606.jpg', 'https://www.youtube.com/embed/WO_FJdiY9dA'),
+(18, 'Schindler\'s List', 'Amblin Entertainment', 'R', '0', 'In Kraków during World War II, the Germans force local Polish Jews into the overcrowded Kraków Ghetto. Oskar Schindler, a German from Czechoslovakia arrives in the city, hoping to make his fortune.', 'Liam Neeson, Ben Kingsley, Ralph Fiennes', '1993-11-30', 'Steven Spielberg', 'Steven Spielberg', 'Steven Spielberg', 'movie', '00:01:00', 'https://lh3.googleusercontent.com/FklCmsEJ4GOlGvPiC4Ae6ijiqbGZNQE-XAcdErYfWsZlnEQvsfFGuNQvAxg7rcO-dLGzpChKBIny_nw0p9Fw=s0', 'https://www.youtube.com/embed/mxphAlJID9U'),
+(19, 'John Wick', 'Summit Entertainment', 'R', '0', 'John Wick loses his wife Helen to a terminal illness. Struggling to cope with her loss, he receives a beagle puppy named Daisy from her before she died, to help him cope with his grief.', 'Keanu Reeves', '2014-09-19', 'Chad Stahelski[a]', 'Chad Stahelski[a]', 'Chad Stahelski', 'movie', '00:01:01', 'https://www.kwanmanie.com/wp-content/uploads/2014/10/john-wick-2.jpg', 'https://www.youtube.com/embed/2AUmvWm5ZDQ'),
+(20, 'Dark', 'Netflix Original', 'R', '0', 'A family saga with a supernatural twist, set in a German town, where the disappearance of two young children exposes the relationships among four families.', 'Louis Hofmann, Karoline Eichhorn, Lisa Vicari', '2020-06-08', 'Baran bo Odar', 'Baran bo Odar', 'Baran bo Odar', 'serie', '00:00:50', 'https://occ-0-999-1001.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABWKGy4K_1_dvtIW7celhWo6bXLMybAQPY7sAzW2aoc6gUizViVh4WXlTfUy-wJF09wIxphPT0fFx-LwBRmcJ9dEZ3HiR.jpg?r=077', 'https://www.youtube.com/embed/HMI84z3qLXw');
+
+INSERT INTO `soundtrack` (`id`, `mediaID`, `soundtrack`) VALUES
+(11, 11, 'Thai'),
+(12, 11, 'English'),
+(13, 12, 'Thai'),
+(14, 12, 'English'),
+(15, 13, 'Thai'),
+(16, 13, 'English'),
+(17, 14, 'Thai'),
+(18, 14, 'English'),
+(19, 15, 'Thai'),
+(20, 15, 'English'),
+(21, 16, 'Thai'),
+(22, 16, 'English'),
+(23, 17, 'Thai'),
+(24, 17, 'English'),
+(25, 18, 'Thai'),
+(26, 18, 'English'),
+(27, 19, 'Thai'),
+(28, 19, 'English'),
+(29, 20, 'Thai'),
+(30, 20, 'English');
+
+INSERT INTO `subtitle` (`id`, `mediaID`, `subtitle`) VALUES
+(22, 11, 'Thai'),
+(23, 11, 'English'),
+(24, 12, 'Thai'),
+(25, 12, 'English'),
+(26, 13, 'Thai'),
+(27, 13, 'English'),
+(28, 14, 'Thai'),
+(29, 14, 'English'),
+(30, 15, 'Thai'),
+(31, 15, 'English'),
+(32, 16, 'Thai'),
+(33, 16, 'English'),
+(34, 17, 'Thai'),
+(35, 17, 'English'),
+(36, 18, 'Thai'),
+(37, 18, 'English'),
+(38, 19, 'Thai'),
+(39, 19, 'English'),
+(40, 20, 'Thai'),
+(41, 20, 'English');
+
+INSERT INTO `genre` (`id`, `genre`, `genreDescription`) VALUES
+(11, 'Dramas', 'Mystery & thriller/Comedy'),
+(12, 'Dramas', 'Drama/Crime'),
+(13, 'Comedies', 'Comedy'),
+(14, 'Comedies', 'Drama'),
+(15, 'Comedies', 'Crime'),
+(16, 'Comedies', 'Mystery & Thriller'),
+(17, 'Action', 'Drama'),
+(18, 'Action', 'History'),
+(19, 'Action', 'War'),
+(20, 'Dramas', 'Mystery & thriller/Horror'),
+(21, 'Anime', 'Animation/Fantasy'),
+(22, 'Dramas', 'Horror/Mystery & thriller'),
+(23, 'Dramas', 'Drama Thriller'),
+(24, 'Action', 'Drama'),
+(25, 'Dramas', 'Drama Thriller');
+
+INSERT INTO `category` (`id`, `mediaID`, `genreID`) VALUES
+(11, 11, 11),
+(12, 12, 12),
+(13, 13, 13),
+(14, 13, 14),
+(15, 13, 15),
+(16, 13, 16),
+(17, 14, 17),
+(18, 14, 18),
+(19, 14, 19),
+(20, 15, 20),
+(21, 16, 21),
+(22, 17, 22),
+(23, 18, 23),
+(24, 19, 24),
+(25, 20, 25);
+
