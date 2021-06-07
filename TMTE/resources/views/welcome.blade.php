@@ -57,35 +57,7 @@
                 <div class="current-menu-title"></div>
                 <div class="mobile-menu-close">&times;</div>
               </div>
-              <ul class="site-menu-main">
-                <li class="nav-item nav-item-has-children">
-                  <a href="#" class="nav-link-item drop-trigger">Dropdowns <i class="fas fa-angle-down"></i>
-                  </a>
-                  <ul class="sub-menu" id="submenu-9">
-                    <li class="sub-menu--item">
-                      <a href="/payment">Payment</a>
-                    </li>
-                    <li class="sub-menu--item">
-                      <a href="#">Home </a>
-                    </li>
-                    <li class="sub-menu--item">
-                      <a href="/notification">Notification</a>
-                    </li>
-                    <li class="sub-menu--item">
-                      <a href="#">SerAd</a>
-                    </li>
-                    <li class="sub-menu--item">
-                      <a href="/mediaAd">MediaAd</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link-item">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link-item">Support</a>
-                </li>
-              </ul>
+
             </nav>
           </div>
           <div class="header-btn header-btn-l-14 ms-auto d-none d-xs-inline-flex">
@@ -124,8 +96,8 @@
           <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 pr-0 " data-aos="fade-right" data-aos-duration="800" data-aos-once="true">
             <div class="content">
               <h1>Unlimited movies, TV shows, and more.</h1>
-              <p>Watch anywhere. Cancel anytime. <br> Ready to watch? Click the button below.</p>
-              <a href="#" class="btn focus-reset">Register / Login</a>
+              <p>Watch anywhere. Cancel anytime. <br> Ready to watch?</p>
+              
             </div>
           </div>
           <div class="col-xl-7 col-lg-5 col-md-8 " data-aos="fade-left" data-aos-duration="800" data-aos-once="true">
@@ -228,7 +200,7 @@
             <div class="section-heading-8">
               <h2>
                Check out our plans and pricing options</h2>
-              <p>Watch TMTE on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from THB99 to THB419 a month. No extra costs, no contracts.</p>
+              <p>Watch TMTE on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from THB19 to THB89 a month. No extra costs, no contracts.</p>
             </div>
           </div>
         </div>
@@ -265,13 +237,15 @@
                 <div class="price-body">
                   <ul class="pricing-list with-check-icon list-unstyled">
                     <li>
-                      Unlimited Blocks</li>
+                      More than 1000 Movies&Series</li>
                     <li>
-                      5GB Clould Storages</li>
+                     Maximum 720p</li>
                     <li>
-                      Custom Domain Names</li>
+                    <del class="text-gray">Unlimited Emails</del>
+                    
+                      </li>
                     <li>
-                      <del class="text-gray">Unlimited Emails</del>
+                    <del class="text-gray">Exclusive TMTE movies</del>
                     </li>
                   </ul>
                 </div>
@@ -304,13 +278,13 @@
                 <div class=" price-body">
                   <ul class="pricing-list with-check-icon list-unstyled">
                     <li>
-                      Unlimited Blocks</li>
+                    More than 1000 Movies&Series</li>
                     <li>
-                      5GB Clould Storages</li>
+                    Maximum 1080p</li>
                     <li>
-                      Custom Domain Names</li>
+                    <del class="text-gray">Unlimited Emails</del></li>
                     <li>
-                      Unlimited Emails</li>
+                    <del class="text-gray">Exclusive TMTE movies</del></li>
                   </ul>
                 </div>
                 <div class="price-btn price-btn-bro">
@@ -342,13 +316,13 @@
                 <div class=" price-body">
                   <ul class="pricing-list with-check-icon list-unstyled">
                     <li>
-                      Unlimited Blocks</li>
+                    More than 1000 Movies&Series</li>
                     <li>
-                      5GB Clould Storages</li>
+                    Maximum 1440p</li>
                     <li>
-                      Custom Domain Names</li>
+                    Unlimited Emails</li>
                     <li>
-                      Unlimited Emails</li>
+                    <del class="text-gray">Exclusive TMTE movies</del></li>
                   </ul>
                 </div>
                 <div class="price-btn">
@@ -381,13 +355,13 @@
                 <div class="price-body">
                   <ul class="pricing-list with-check-icon list-unstyled">
                     <li>
-                      Unlimited Blocks</li>
+                    More than 1000 Movies&Series</li>
                     <li>
-                      5GB Clould Storages</li>
+                    Maximum 2160p</li>
                     <li>
-                      Custom Domain Names</li>
+                    Unlimited Emails</li>
                     <li>
-                      Unlimited Emails</li>
+                    Exclusive TMTE movies</li>
                   </ul>
                 </div>
                 <div class="price-btn">
@@ -421,59 +395,27 @@
     <footer class="footer-area-l-12 position-relative">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-lg-7 col-md-11 pl-lg-6" data-aos="fade-right" data-aos-duration="800" data-aos-once="true">
-            <div class="row">
-              <div class="col-sm-3 col-xs-6">
-                <div class="footer-widget widget2">
-                  <p>Help menu</p>
-                  <ul class="widget-links pl-0 list-unstyled">
-                    <li><a href="">About</a></li>
-                    <li><a href="">Features</a></li>
-                    <li><a href="">Works</a></li>
-                    <li><a href="">Career</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-sm-4 col-xs-6">
-                <div class="footer-widget widget3">
-                  <ul class="widget-links pl-0 list-unstyled">
-                    <li><a href="">Contact </a></li>
-                    <li><a href="">Help & Support</a></li>
-                    <li><a href="">Privacy Policy</a></li>
-                    <li><a href="">Terms & Conditions</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-sm-5 col-xs-6 pl-lg-0">
-                <div class="footer-widget widget4">
-                  <p class="widget-title">Products</p>
-                  <ul class="widget-links pl-0 list-unstyled ">
-                    <li><a href="">Essential Landing Page</a></li>
-                    <li><a href="">Alpha Dashboard Pro</a></li>
-                    <li><a href="">Karnel Admin Dashboard</a></li>
-                    <li><a href="">Gray UI Kit</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+        <div class = "col-lg-3">
+        </div>
           </div>
-          <div class="col-lg-5 col-md-8 col-sm-11" data-aos="fade-left" data-aos-duration="800" data-aos-once="true">
-            <div class="footer-subs-form-l-12">
-              <p>Subscribe to our newsletter</p>
-              <h6>Subscribe to get lastest offers, news and events announcements. No spam in your inbox.</h6>
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter your email address" aria-label="">
-                <div class="input-group-append">
-                  <button class="btn border-0 focus-reset" type="button">
-                    <i class="icon icon-tail-right text-white"></i>
-                  </button>
-                </div>
+          <div class = "row">
+              <div class = "col-lg-5">
               </div>
-            </div>
-          </div>
+              <div class = "col-lg-3">
+              <p>Group Member TMTE</p>
+              <p>62070501039 นายปีย์มนัส คูตระกูล</p>
+              <p>62070501061 นายศุภกร มหาวงศ์เมฆิน</p>
+              <p>62070501072 นายณัฐกิต เปลี่ยนขุนทด</p>
+              <p>62070501073 นายธนธรณ์ มหัทธนพล</p>
+              <p>TMTE Video streaming websites</p>
+              </div>
+              </div>
+
         </div>
       </div>
     </footer>
+
+    
   </div>
   <!-- Vendor Scripts -->
   <script src="js/vendor.min.js"></script>
