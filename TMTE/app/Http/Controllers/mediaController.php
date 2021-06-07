@@ -59,6 +59,11 @@ class mediaController extends Controller
         $mediaLogID = DB::select(DB::raw('SELECT id FROM media_logs WHERE media_logs.mediaID = :mediaID AND media_logs.profileID = :pID'), 
         array('mediaID' => $mediaID, 'pID' => $pID));
 
+        $data2 = array();
+        $data2['listID'] = $mediaLogID[0]->id;
+        DB::table('media_histories') -> insert($data2);
+
+
         $mediaLogID = $mediaLogID[0]->id;
 
         return View::make('user.mediaPage')->with(compact('mediaData', 'subtitles','soundtracks','genre', 'mediaLogID'));
@@ -83,7 +88,7 @@ class mediaController extends Controller
                                                 ]) -> get();
         }
 
-        $res = NULL;
+        $res = '<form></form>';
         
         foreach($data as $row){
             $value = $row->id . ',' . $profile;
